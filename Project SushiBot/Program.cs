@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Project_SushiBot
@@ -11,27 +12,9 @@ namespace Project_SushiBot
     {
         static void Main(string[] args)
         {
-
-            //Console.SetCursorPosition(50, 9);
-            //Console.Write("Введите фамилию");
-            //Console.SetCursorPosition(9, 9);
-            //string userSurname = Console.ReadLine();
-            //Console.SetCursorPosition(50, 9);
-            //Console.Write("Принято        ");
-
-            //Console.SetCursorPosition(50, 11);
-            //Console.Write("Введите имя");
-            //Console.SetCursorPosition(5,11);
-            //string userName = Console.ReadLine();
-            //Console.SetCursorPosition(50, 11);
-            //Console.Write("Принято        ");
-
-            //Console.SetCursorPosition(50, 13);
-            //Console.Write("Введите email");
-            //Console.SetCursorPosition(8, 13);
-            //string userEmail = Console.ReadLine();
-            //Console.SetCursorPosition(50, 13);
-            //Console.Write("Принято        ");
+            PageProgram.PageRegisterNewUser(string.Empty, out int cursorPositionLeftInfo, out СursorPosition сursorPositionSurname, out СursorPosition сursorPositionName, out СursorPosition сursorPositionEmail, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionRepeatPassword);
+            string userSurname = PageInput.InputSurname(cursorPositionLeftInfo, сursorPositionSurname);
+            string userName = PageInput.InputName(cursorPositionLeftInfo, сursorPositionName);
 
             //Console.SetCursorPosition(50, 15);
             //Console.Write("Введите логин");

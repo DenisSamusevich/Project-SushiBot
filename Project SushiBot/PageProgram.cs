@@ -45,11 +45,12 @@ namespace Project_SushiBot
             Console.SetCursorPosition(40, 23);
             Console.WriteLine("ESC - Вернуться в предыдущее меню");
         }
-        static void PageRegisterNewUser(string advertising, out СursorPosition сursorPositionSurname, out СursorPosition сursorPositionName, out СursorPosition сursorPositionEmail, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionRepeatPassword)
+        internal static void PageRegisterNewUser(string advertising, out int CursorPositionLeftInfo, out СursorPosition сursorPositionSurname, out СursorPosition сursorPositionName, out СursorPosition сursorPositionEmail, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionRepeatPassword)
         {
             Console.Clear();
             Console.SetWindowSize(80, 30);
             Console.SetBufferSize(80, 30);
+            CursorPositionLeftInfo = 50;
             advertising = "*******************************************************************************\n*******************                                        ********************\n*********       А тут могла бы быть ваша реклама, но будет чужая     **********\n*********                 Казино Азино и всякая шляпа                **********\n*******************                                        ********************\n*******************************************************************************";
             Console.WriteLine(advertising);
             Console.WriteLine("Вас приветствует окно регистрации нового пользователя");
@@ -71,6 +72,8 @@ namespace Project_SushiBot
             Console.WriteLine("1 - Принять форму");
             Console.WriteLine("2 - Сбросить форму");
             Console.SetCursorPosition(40, 23);
+            Console.WriteLine("ESC - Вернуться в предыдущее меню");
+            Console.SetCursorPosition(40, 24);
             Console.WriteLine("ESC - Вернуться в предыдущее меню");
         }
         static void PageNews(string advertising,string newsText, string newsTitle,int indexNews, int indexMaxNews)
@@ -107,10 +110,70 @@ namespace Project_SushiBot
 
         }
     }
-    struct СursorPosition
+    class PageInput
     {
-        int Left { get; set; }
-        int Top { get; set; }
+        internal static string InputSurname(int cursorPositionLeftInfo, СursorPosition сursorPositionSurname)
+        {
+            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionSurname.Top);
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Введите фамилию");
+            Console.SetCursorPosition(сursorPositionSurname.Left, сursorPositionSurname.Top);
+            string userSurname = Console.ReadLine();
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Принято        ");
+            return userSurname;
+        }
+        internal static string InputName(int cursorPositionLeftInfo, СursorPosition сursorPositionName)
+        {
+            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionName.Top);
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Введите имя");
+            Console.SetCursorPosition(сursorPositionName.Left, сursorPositionName.Top);
+            string userName = Console.ReadLine();
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Принято        ");
+            return userName;
+        }
+        internal static string InputEmail(int cursorPositionLeftInfo, СursorPosition сursorPositionEmail)
+        {
+            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionEmail.Top);
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Введите email");
+            //считывание емалов с базы
+            string[] basaEmail = new string[5] { "samynchik@mail.com", "kc29hc0e@yandex.ru", "myrfqpb@mail.ru", "copaa6@gmail.com", "xl9bc5@gmail.com" };
+            
+            string userEmail = string.Empty;
+            while (true)
+            {
+                //Оформить регулярное выражение на емайл
+                Console.SetCursorPosition(сursorPositionEmail.Left, сursorPositionEmail.Top);
+                userEmail = Console.ReadLine();
+                userEmail = userEmail.Trim();
+                int j = 0;
+                for (int i = 0; i < basaEmail.Length; i++)
+                {
+                    if (basaEmail[i].Equals(userEmail,StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+                        Console.Write("Такой email уже существует");
+                        break;
+                    }
+                    j++;
+                }
+                if (j == basaEmail.Length) ;
+                {
+                    break;
+                }
+            }
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Принято        ");
+            return userEmail;
+        }
+    }
+    internal struct СursorPosition
+    {
+        internal int Left { get; set; }
+        internal int Top { get; set; }
         internal СursorPosition(int left, int top)
         {
             Left = left;
