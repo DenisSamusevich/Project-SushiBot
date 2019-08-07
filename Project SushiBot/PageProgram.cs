@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Project_SushiBot
@@ -141,14 +142,19 @@ namespace Project_SushiBot
             Console.Write("Введите email");
             //считывание емалов с базы
             string[] basaEmail = new string[5] { "samynchik@mail.com", "kc29hc0e@yandex.ru", "myrfqpb@mail.ru", "copaa6@gmail.com", "xl9bc5@gmail.com" };
-            
             string userEmail = string.Empty;
             while (true)
             {
-                //Оформить регулярное выражение на емайл
+                
+                string regexEmail = @"^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$";
                 Console.SetCursorPosition(сursorPositionEmail.Left, сursorPositionEmail.Top);
-                userEmail = Console.ReadLine();
-                userEmail = userEmail.Trim();
+                userEmail = Console.ReadLine();                
+                if (!Regex.IsMatch(userEmail,regexEmail))
+                {
+                    Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+                    Console.Write("Не коректное значение");
+                    continue;
+                }
                 int j = 0;
                 for (int i = 0; i < basaEmail.Length; i++)
                 {
@@ -169,6 +175,54 @@ namespace Project_SushiBot
             Console.Write("Принято        ");
             return userEmail;
         }
+        internal static string InputLogin(int cursorPositionLeftInfo, СursorPosition сursorPositionLogin)
+        {
+            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionLogin.Top);
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Введите свой login");
+            //считывание емалов с базы
+            string[] basaLogin = new string[5] { "samynchik@mail.com", "kc29hc0e@yandex.ru", "myrfqpb@mail.ru", "copaa6@gmail.com", "xl9bc5@gmail.com" };
+            string userLogin = string.Empty;
+            while (true)
+            {
+
+                string regexEmail = @"^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$";
+                Console.SetCursorPosition(сursorPositionEmail.Left, сursorPositionEmail.Top);
+                userEmail = Console.ReadLine();
+                if (!Regex.IsMatch(userEmail, regexEmail))
+                {
+                    Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+                    Console.Write("Не коректное значение");
+                    continue;
+                }
+                int j = 0;
+                for (int i = 0; i < basaEmail.Length; i++)
+                {
+                    if (basaEmail[i].Equals(userEmail, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+                        Console.Write("Такой email уже существует");
+                        break;
+                    }
+                    j++;
+                }
+                if (j == basaEmail.Length) ;
+                {
+                    break;
+                }
+            }
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Принято        ");
+            return userEmail;
+        }
+        //Console.SetCursorPosition(50, 15);
+        //Console.Write("Введите логин");
+        //Console.SetCursorPosition(8, 15);
+        //string userLogin = Console.ReadLine();
+        //Console.SetCursorPosition(50, 15);
+        //Console.Write("Принято        ");
+
+    }
     }
     internal struct СursorPosition
     {
