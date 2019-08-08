@@ -16,19 +16,8 @@ namespace Project_SushiBot
             string userSurname = PageInput.InputSurname(cursorPositionLeftInfo, сursorPositionSurname);
             string userName = PageInput.InputName(cursorPositionLeftInfo, сursorPositionName);
 
-            //Console.SetCursorPosition(50, 15);
-            //Console.Write("Введите логин");
-            //Console.SetCursorPosition(8, 15);
-            //string userLogin = Console.ReadLine();
-            //Console.SetCursorPosition(50, 15);
-            //Console.Write("Принято        ");
 
-            //Console.SetCursorPosition(50, 17);
-            //Console.Write("Введите пароль");
-            //Console.SetCursorPosition(11, 17);
-            //string userPassword = Console.ReadLine();
-            //Console.SetCursorPosition(50, 17);
-            //Console.Write("Принято        ");
+
 
             //Console.SetCursorPosition(50, 19);
             //Console.Write("Повторите пароль");

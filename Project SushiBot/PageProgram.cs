@@ -145,8 +145,7 @@ namespace Project_SushiBot
             string userEmail = string.Empty;
             while (true)
             {
-                
-                string regexEmail = @"^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$";
+                string regexEmail = @"^[a-z0-9_-]+@[a-z0-9_-]+\.[a-z]{2,6}$";
                 Console.SetCursorPosition(сursorPositionEmail.Left, сursorPositionEmail.Top);
                 userEmail = Console.ReadLine();                
                 if (!Regex.IsMatch(userEmail,regexEmail))
@@ -166,7 +165,7 @@ namespace Project_SushiBot
                     }
                     j++;
                 }
-                if (j == basaEmail.Length) ;
+                if (j == basaEmail.Length)
                 {
                     break;
                 }
@@ -180,50 +179,97 @@ namespace Project_SushiBot
             СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionLogin.Top);
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Введите свой login");
-            //считывание емалов с базы
-            string[] basaLogin = new string[5] { "samynchik@mail.com", "kc29hc0e@yandex.ru", "myrfqpb@mail.ru", "copaa6@gmail.com", "xl9bc5@gmail.com" };
+            //считывание логинов с базы
+            string[] basaLogin = new string[5] { "samyn", "yandex", "komaro", "Vasia", "Valera" };
             string userLogin = string.Empty;
             while (true)
             {
-
-                string regexEmail = @"^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$";
-                Console.SetCursorPosition(сursorPositionEmail.Left, сursorPositionEmail.Top);
-                userEmail = Console.ReadLine();
-                if (!Regex.IsMatch(userEmail, regexEmail))
-                {
-                    Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
-                    Console.Write("Не коректное значение");
-                    continue;
-                }
+                Console.SetCursorPosition(сursorPositionLogin.Left, сursorPositionLogin.Top);
+                userLogin = Console.ReadLine();
                 int j = 0;
-                for (int i = 0; i < basaEmail.Length; i++)
+                for (int i = 0; i < basaLogin.Length; i++)
                 {
-                    if (basaEmail[i].Equals(userEmail, StringComparison.OrdinalIgnoreCase))
+                    if (basaLogin[i].Equals(userLogin, StringComparison.OrdinalIgnoreCase))
                     {
                         Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
-                        Console.Write("Такой email уже существует");
+                        Console.Write("Такой login уже существует");
                         break;
                     }
                     j++;
                 }
-                if (j == basaEmail.Length) ;
+                if (j == basaLogin.Length)
                 {
                     break;
                 }
             }
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Принято        ");
-            return userEmail;
+            return userLogin;
         }
-        //Console.SetCursorPosition(50, 15);
-        //Console.Write("Введите логин");
-        //Console.SetCursorPosition(8, 15);
-        //string userLogin = Console.ReadLine();
-        //Console.SetCursorPosition(50, 15);
-        //Console.Write("Принято        ");
+        internal static string InputPassword(int cursorPositionLeftInfo, СursorPosition сursorPositionPassword, СursorPosition сursorPositionRepeatPassword)
+        {
+            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionPassword.Top);
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Введите пароль");
+            string userPassword = string.Empty;
+            while (true)
+            {
+                string regexPassword = @"^(?=.*(\d))(?=.*(\p{L})).{6,}";
+                Console.SetCursorPosition(сursorPositionPassword.Left, сursorPositionPassword.Top);
+                userPassword = Console.ReadLine();
+                //Затереть пароль
+                if (!Regex.IsMatch(userPassword, regexPassword))
+                {
+                    Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+                    Console.Write("Не коректное значение. Пароль");
+                    Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top-1);
+                    Console.Write("должен иметь минимум одну циф-");
+                    Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top - 2);
+                    Console.Write("ру и букву, но не менее шести");
+                    Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top - 3);
+                    Console.Write("символов");
+                }
+                else
+                {
+                    if (InputRepeatPassword(cursorPositionLeftInfo, сursorPositionRepeatPassword, userPassword))
+                    {
+                        break;
+                    }
+                    
+                }
+            }
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Принято        ");
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top - 1);
+            Console.Write("                             ");
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top - 2);
+            Console.Write("                             ");
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top - 3);
+            Console.Write("           ");
+            return userPassword;
+        }
 
+        internal static bool InputRepeatPassword(int cursorPositionLeftInfo, СursorPosition сursorPositionRepeatPassword,string userPassword)
+        {
+            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionRepeatPassword.Top);
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Повторите пароль");
+            string userRepeatPassword = string.Empty;
+            if (userPassword.Equals(userRepeatPassword, StringComparison.Ordinal))
+            {
+                Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+                Console.Write("Принято        ");
+                return true;
+            }
+            else
+            {
+                Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+                Console.Write("Неверно, попробуйте снова");
+                return false;
+            }
+        }
     }
-    }
+
     internal struct СursorPosition
     {
         internal int Left { get; set; }
