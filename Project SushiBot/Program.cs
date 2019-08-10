@@ -12,21 +12,37 @@ namespace Project_SushiBot
     {
         static void Main(string[] args)
         {
-            PageProgram.PageRegisterNewUser(string.Empty, out int cursorPositionLeftInfo, out СursorPosition сursorPositionSurname, out СursorPosition сursorPositionName, out СursorPosition сursorPositionEmail, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionRepeatPassword);
-            string userSurname = PageInput.InputSurname(cursorPositionLeftInfo, сursorPositionSurname);
-            string userName = PageInput.InputName(cursorPositionLeftInfo, сursorPositionName);
+            //Подгрузить банеры
+            string[] Banners = new string[] { "*******************************************************************************\n*******************                                        ********************\n*********       А тут могла бы быть ваша реклама, но будет чужая     **********\n*********                 Казино Азино и всякая шляпа                **********\n*******************                                        ********************\n*******************************************************************************" }; 
+            AdvertisingsBanner advertisingsBanner = new AdvertisingsBanner(Banners);
+            EnumPage enumInput = EnumPage.Greeting;
+            Start:
+            switch (enumInput)
+            {
+                case EnumPage.Greeting:
+                    {
+                        PageProgram.PageGreeting(advertisingsBanner.RandomBanner(), out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight);
+                        goto Start;
+                    }
+                case EnumPage.News:
+                    {
+                        goto Start;
+                    }
+                case EnumPage.RegisterNewUser:
+                    {
+                        goto Start;
+                    }
+                case EnumPage.SingUp:
+                    {
+                        goto Start;
+                    }
+            }
 
 
-
-
-            //Console.SetCursorPosition(50, 19);
-            //Console.Write("Повторите пароль");
-            //Console.SetCursorPosition(21, 19);
-            //string userRepeatPassword = Console.ReadLine();
-            //Console.SetCursorPosition(50, 19);
-            //Console.Write("Принято        ");
-
-            Console.Read();
+            //PageProgram.PageRegisterNewUser(string.Empty, out int cursorPositionLeftInfo, out СursorPosition сursorPositionSurname, out СursorPosition сursorPositionName, out СursorPosition сursorPositionEmail, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionRepeatPassword);
+            //string userSurname = PageInput.InputSurname(cursorPositionLeftInfo, сursorPositionSurname);
+            //string userName = PageInput.InputName(cursorPositionLeftInfo, сursorPositionName);
+            //Console.Read();
         }
     }
 }

@@ -9,30 +9,57 @@ namespace Project_SushiBot
 {
     class PageProgram
     {
-        static void PageGreeting(string advertising)
+        internal static void PageGreeting(string advertising, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
         {
             Console.Clear();
             Console.SetWindowSize(80, 30);
             Console.SetBufferSize(80, 30);
-            advertising = "*******************************************************************************\n*******************                                        ********************\n*********       А тут могла бы быть ваша реклама, но будет чужая     **********\n*********                 Казино Азино и всякая шляпа                **********\n*******************                                        ********************\n*******************************************************************************";
             Console.WriteLine(advertising);
             Console.WriteLine("Вас приветствует СУШИБОТ");
             Console.WriteLine("Мы представляет ресторан суши с бесплатной доставкой на дом\n");
             Console.WriteLine("Если вы являетесь ценителем японской кухни, то не откажите себе в удовольствии \nи заказать вкуснейшие суши в Минске. На нашем сайте вы найдете широкий ассорти-\nмент роллов и сетов на любой вкус.  Все они сделаны из свежих продуктов и нату-\nральных ингредиентов. Над приготовлением работают настоящие мастера своего дела\nСуши - это оптимальный вариант правильного питания,  ведь каждый сет – это сба-\nлансированный состав медленных углеводов, белка и клетчатки.Фамилия:\n");
-            Console.SetCursorPosition(0, 23);
-            Console.WriteLine("1 - Войти");
-            Console.WriteLine("2 - Зарегестрироваться");
-            Console.SetCursorPosition(40, 23);
-            Console.WriteLine("3 - Новости");
-            Console.SetCursorPosition(40, 24);
-            Console.WriteLine("ESC - Выйти");
+            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
+            сursorPositionInputInfoRight = new СursorPosition(40, 23);
         }
-        static void PageUserSingUp(string advertising, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword)
+        internal EnumInput PageGreetingBottom(СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        {
+            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            Console.WriteLine("ENTER - Войти под своим логином");
+            Console.WriteLine("Tab - Зарегестрироваться");
+            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.WriteLine("Spasebar - Новости");
+            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top+1);
+            Console.WriteLine("ESC - Выйти из программы");
+            ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
+            switch (consoleKeyInfo.Key)
+            {
+                case ConsoleKey.Enter:
+                    {
+                        return EnumInput.Enter;
+                    }
+                case ConsoleKey.Escape:
+                    {
+                        return EnumInput.Exit;
+                    }
+                case ConsoleKey.Tab:
+                    {
+                        return EnumInput.SignUp;
+                    }
+                case ConsoleKey.Spacebar:
+                    {
+                        return EnumInput.News;
+                    }
+                default:
+                    {
+                        return EnumInput.None;
+                    }
+            }
+        }
+        internal static void PageUserSingUp(string advertising, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
         {
             Console.Clear();
             Console.SetWindowSize(80, 30);
             Console.SetBufferSize(80, 30);
-            advertising = "*******************************************************************************\n*******************                                        ********************\n*********       А тут могла бы быть ваша реклама, но будет чужая     **********\n*********                 Казино Азино и всякая шляпа                **********\n*******************                                        ********************\n*******************************************************************************";
             Console.WriteLine(advertising);
             Console.WriteLine("Вас приветствует окно входа пользователя пользователя");
             Console.WriteLine("Введите свой логин и пароль в форму\n");
@@ -40,19 +67,44 @@ namespace Project_SushiBot
             сursorPositionLogin = new СursorPosition(8, 9);
             Console.WriteLine("Password:\n");
             сursorPositionPassword = new СursorPosition(11, 11);
-            Console.SetCursorPosition(0, 23);
-            Console.WriteLine("1 - Принять форму");
-            Console.WriteLine("2 - Сбросить форму");
-            Console.SetCursorPosition(40, 23);
-            Console.WriteLine("ESC - Вернуться в предыдущее меню");
+            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
+            сursorPositionInputInfoRight = new СursorPosition(40, 23);
         }
-        internal static void PageRegisterNewUser(string advertising, out int CursorPositionLeftInfo, out СursorPosition сursorPositionSurname, out СursorPosition сursorPositionName, out СursorPosition сursorPositionEmail, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionRepeatPassword)
+        internal EnumInput PageUserSingUpBottom(СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        {
+            //Метод повторяется с PageRegisterNewUserBottom
+            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            Console.WriteLine("ENTER - Принять форму");
+            Console.WriteLine("DELETE - Сбросить форму");
+            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.WriteLine("ESC - Вернуться в предыдущее меню");
+            ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
+            switch (consoleKeyInfo.Key)
+            {
+                case ConsoleKey.Enter:
+                    {
+                        return EnumInput.Enter;
+                    }
+                case ConsoleKey.Escape:
+                    {
+                        return EnumInput.Back;
+                    }
+                case ConsoleKey.Delete:
+                    {
+                        return EnumInput.Reset;
+                    }
+                default:
+                    {
+                        return EnumInput.None;
+                    }
+            }
+        }
+        internal static void PageRegisterNewUser(string advertising, out int CursorPositionLeftInfo, out СursorPosition сursorPositionSurname, out СursorPosition сursorPositionName, out СursorPosition сursorPositionEmail, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionRepeatPassword, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
         {
             Console.Clear();
             Console.SetWindowSize(80, 30);
             Console.SetBufferSize(80, 30);
             CursorPositionLeftInfo = 50;
-            advertising = "*******************************************************************************\n*******************                                        ********************\n*********       А тут могла бы быть ваша реклама, но будет чужая     **********\n*********                 Казино Азино и всякая шляпа                **********\n*******************                                        ********************\n*******************************************************************************";
             Console.WriteLine(advertising);
             Console.WriteLine("Вас приветствует окно регистрации нового пользователя");
             Console.WriteLine("Ниже расположена форма которую необходимо заполнить\n");
@@ -69,46 +121,96 @@ namespace Project_SushiBot
             Console.WriteLine("Повторите Password*:\n");
             сursorPositionRepeatPassword = new СursorPosition(21, 19);
             Console.WriteLine("Поля отмеченые * обязательны для заполнения");
-            Console.SetCursorPosition(0, 23);
-            Console.WriteLine("1 - Принять форму");
-            Console.WriteLine("2 - Сбросить форму");
-            Console.SetCursorPosition(40, 23);
-            Console.WriteLine("ESC - Вернуться в предыдущее меню");
-            Console.SetCursorPosition(40, 24);
-            Console.WriteLine("ESC - Вернуться в предыдущее меню");
+            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
+            сursorPositionInputInfoRight = new СursorPosition(40, 23);
         }
-        static void PageNews(string advertising,string newsText, string newsTitle,int indexNews, int indexMaxNews)
+        internal EnumInput PageRegisterNewUserBottom(СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
         {
-                string pageTitle = "Новости";
-                string nextNews = "1 - Следующая новость";
-                string prewNews = "2 - Предыдущая новость";
-                Console.Clear();
-                Console.SetWindowSize(80, 30);
-                Console.SetBufferSize(80, 30);
-                advertising = "*******************************************************************************\n*******************                                        ********************\n*********       А тут могла бы быть ваша реклама, но будет чужая     **********\n*********                 Казино Азино и всякая шляпа                **********\n*******************                                        ********************\n*******************************************************************************";
-                newsText = "Многие любители японской кухни задаются вопросом, что такое нори. Используются \nнори для суши в классической японской кухне, при приготовлении роллов. Это спе-\nциальные водоросли, в которые заворачивают рыбу, рис и прочие ингредиенты. При \nэтом важно понимать, что нори представляют собой натуральный продукт, полностью\nбезопасный и очень полезный для организма человека. Как правило, такие водорос-\nли используются при приготовлении большинства суши и роллов любого вида. Но все\nингредиенты должны быть отменного качества, только в таком случае гарантиру-\nется уникальный вкус и свойства японского блюда\n";
-                newsTitle = "НОРИ ДЛЯ СУШИ\n";
-                Console.WriteLine(advertising);
-                Console.WriteLine(pageTitle);
-                Console.WriteLine(newsTitle);
-                Console.WriteLine(newsText);
-                Console.SetCursorPosition(0, 23);
-                if (indexNews == 0)
-                {
-                    nextNews = string.Empty;
-                }
-                else if (indexNews == indexMaxNews)
-                {
-                    prewNews = string.Empty;
-                }
-                Console.WriteLine(nextNews);
-                Console.WriteLine(prewNews);
-                Console.SetCursorPosition(40, 23);
-                Console.WriteLine("3 - Открыть ссылку в браузере");
-                //Process.Start("E:\\LearnWeb\\start.html"); запись файла  и Запуск ссылки сделать
-                Console.SetCursorPosition(40, 24);
-                Console.WriteLine("ESC - Вернуться в предыдущее меню");
-
+            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            Console.WriteLine("ENTER - Принять форму");
+            Console.WriteLine("DELETE - Сбросить форму");
+            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.WriteLine("ESC - Вернуться в предыдущее меню");
+            ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
+            switch (consoleKeyInfo.Key)
+            {
+                case ConsoleKey.Enter:
+                    {
+                        return EnumInput.Enter;
+                    }
+                case ConsoleKey.Escape:
+                    {
+                        return EnumInput.Back;
+                    }
+                case ConsoleKey.Delete:
+                    {
+                        return EnumInput.Reset;
+                    }
+                default:
+                    {
+                        return EnumInput.None;
+                    }
+            }
+        }
+        internal static void PageNews(string advertising, string newsText, string newsTitle, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        {
+            string pageTitle = "Новости";
+            Console.Clear();
+            Console.SetWindowSize(80, 30);
+            Console.SetBufferSize(80, 30);
+            newsText = "Многие любители японской кухни задаются вопросом, что такое нори. Используются \nнори для суши в классической японской кухне, при приготовлении роллов. Это спе-\nциальные водоросли, в которые заворачивают рыбу, рис и прочие ингредиенты. При \nэтом важно понимать, что нори представляют собой натуральный продукт, полностью\nбезопасный и очень полезный для организма человека. Как правило, такие водорос-\nли используются при приготовлении большинства суши и роллов любого вида. Но все\nингредиенты должны быть отменного качества, только в таком случае гарантиру-\nется уникальный вкус и свойства японского блюда\n";
+            newsTitle = "НОРИ ДЛЯ СУШИ\n";
+            Console.WriteLine(advertising);
+            Console.WriteLine(pageTitle);
+            Console.WriteLine(newsTitle);
+            Console.WriteLine(newsText);
+            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
+            сursorPositionInputInfoRight = new СursorPosition(40, 23);
+        }
+        internal EnumInput PageNewsBottom(int indexNews, int indexMaxNews, СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        {
+            string nextNews = "Стрелка вправо - Следующая новость";
+            string prewNews = "Стрелка влево - Предыдущая новость";
+            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            if (indexNews == 0)
+            {
+                nextNews = string.Empty;
+            }
+            else if (indexNews == indexMaxNews)
+            {
+                prewNews = string.Empty;
+            }
+            Console.WriteLine(nextNews);
+            Console.WriteLine(prewNews);
+            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.WriteLine("ENTER - Открыть ссылку в браузере");
+            //Process.Start("E:\\LearnWeb\\start.html"); запись файла  и Запуск ссылки сделать
+            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top + 1);
+            Console.WriteLine("ESC - Вернуться в предыдущее меню");
+            ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
+            switch (consoleKeyInfo.Key)
+            {
+                case ConsoleKey.Enter:
+                    {
+                        return EnumInput.OpenBrowser;
+                    }
+                case ConsoleKey.Escape:
+                    {
+                        return EnumInput.Back;
+                    }
+                case ConsoleKey.RightArrow:
+                    {
+                        return EnumInput.Following;
+                    }
+                case ConsoleKey.LeftArrow:
+                    {
+                        return EnumInput.Previous;
+                    }
+                default:
+                    {
+                        return EnumInput.None;
+                    }
+            }
         }
     }
     class PageInput
@@ -217,7 +319,11 @@ namespace Project_SushiBot
                 string regexPassword = @"^(?=.*(\d))(?=.*(\p{L})).{6,}";
                 Console.SetCursorPosition(сursorPositionPassword.Left, сursorPositionPassword.Top);
                 userPassword = Console.ReadLine();
-                //Затереть пароль
+                Console.SetCursorPosition(сursorPositionPassword.Left, сursorPositionPassword.Top);
+                for (int i = 0; i < userPassword.Length; i++)
+                {
+                    Console.Write("*");
+                }
                 if (!Regex.IsMatch(userPassword, regexPassword))
                 {
                     Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
@@ -248,13 +354,17 @@ namespace Project_SushiBot
             Console.Write("           ");
             return userPassword;
         }
-
         internal static bool InputRepeatPassword(int cursorPositionLeftInfo, СursorPosition сursorPositionRepeatPassword,string userPassword)
         {
             СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionRepeatPassword.Top);
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Повторите пароль");
-            string userRepeatPassword = string.Empty;
+            Console.SetCursorPosition(сursorPositionRepeatPassword.Left, сursorPositionRepeatPassword.Top);
+            string userRepeatPassword = Console.ReadLine();
+            for (int i = 0; i < userRepeatPassword.Length; i++)
+            {
+                Console.Write("*");
+            }
             if (userPassword.Equals(userRepeatPassword, StringComparison.Ordinal))
             {
                 Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
@@ -269,7 +379,20 @@ namespace Project_SushiBot
             }
         }
     }
+    class AdvertisingsBanner
+    {
+        internal string[] Banners { get; }
 
+        internal AdvertisingsBanner(string[] Banners)
+        {
+            this.Banners = Banners;
+        }
+        internal string RandomBanner()
+        {
+            Random random = new Random();
+            return Banners[random.Next(0, Banners.Length)];
+        }
+    }
     internal struct СursorPosition
     {
         internal int Left { get; set; }
