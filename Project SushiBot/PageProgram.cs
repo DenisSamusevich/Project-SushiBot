@@ -25,9 +25,9 @@ namespace Project_SushiBot
         {
             Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
             Console.WriteLine("ENTER - Войти под своим логином");
-            Console.WriteLine("Tab - Зарегестрироваться");
+            Console.WriteLine("TAB - Зарегестрироваться");
             Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
-            Console.WriteLine("Spasebar - Новости");
+            Console.WriteLine("SPACEBAR - Новости");
             Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top+1);
             Console.WriteLine("ESC - Выйти из программы");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
@@ -152,7 +152,7 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageNews(string advertising, string newsText, string newsTitle, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        internal static void PageNews(string advertising, string newsTitle, string newsText, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
         {
             string pageTitle = "Новости";
             Console.Clear();
@@ -174,11 +174,11 @@ namespace Project_SushiBot
             Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
             if (indexNews == 0)
             {
-                nextNews = string.Empty;
+                prewNews = string.Empty;
             }
             else if (indexNews == indexMaxNews)
             {
-                prewNews = string.Empty;
+                nextNews = string.Empty;
             }
             Console.WriteLine(nextNews);
             Console.WriteLine(prewNews);
@@ -190,6 +190,14 @@ namespace Project_SushiBot
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             switch (consoleKeyInfo.Key)
             {
+                case ConsoleKey.RightArrow:
+                    {
+                        return indexNews == indexMaxNews ? EnumInput.None : EnumInput.Following;
+                    }
+                case ConsoleKey.LeftArrow:
+                    {
+                        return indexNews == 0? EnumInput.None:EnumInput.Previous;
+                    }
                 case ConsoleKey.Enter:
                     {
                         return EnumInput.OpenBrowser;
@@ -198,13 +206,75 @@ namespace Project_SushiBot
                     {
                         return EnumInput.Back;
                     }
+                default:
+                    {
+                        return EnumInput.None;
+                    }
+            }
+        }
+        internal static void PageProfile(string advertising,string titleStock, string textStock, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        {
+            Console.Clear();
+            Console.SetWindowSize(80, 30);
+            Console.SetBufferSize(80, 30);
+            titleStock = "АКЦИЯ - Летнее комбо от SUSHI BOT";
+            textStock = "Когда хочется всего и сразу. Выбери одну из 4-х комбинаций роллов, добавь один \nиз десертов на выбор и не забудь про напиток. Зеленый чай с цитрусом или черный\nчай с лесными ягодами. И это все по супер цене - всего за 29.90р.\n*комбо предложение не суммируется с другими скидками, дисконтами или акционными\n предложениями.\n";
+            Console.WriteLine(advertising);
+            Console.WriteLine("Вы вошли в акаунт. Добрый день {0} {1}\n"); //должны быть данные пользователя
+            Console.WriteLine(titleStock);
+            Console.WriteLine(textStock);
+            Console.WriteLine("Сдесь вы можете узнать о наших актуальных акциях, заказать суши с доставкой,  \nпроверить статус своих заказов, просмотреть новости.");
+            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
+            сursorPositionInputInfoRight = new СursorPosition(40, 23);
+        }
+        internal EnumInput PageProfileBottom(int indexStock, int indexMaxStocks, СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        {
+            string nextStock = "Стрелка вправо - Следующая Акция";
+            string prewStock = "Стрелка влево - Предыдущая Акция";
+            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            if (indexStock == 0)
+            {
+                prewStock = string.Empty;
+            }
+            else if (indexStock == indexMaxStocks)
+            {
+                nextStock = string.Empty;
+            }
+            Console.WriteLine(nextStock);
+            Console.WriteLine(prewStock);
+            Console.WriteLine("ENTER - Заказать суши");
+            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.WriteLine("TAB - Проверить статус заказа");
+            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top + 1);
+            Console.WriteLine("SPACEBAR - Новости");
+            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top + 2);
+            Console.WriteLine("ESC - Выйти из профиля");
+            ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
+            switch (consoleKeyInfo.Key)
+            {
                 case ConsoleKey.RightArrow:
                     {
-                        return EnumInput.Following;
+                        return indexStock == indexMaxStocks ? EnumInput.None : EnumInput.Following;
                     }
                 case ConsoleKey.LeftArrow:
                     {
-                        return EnumInput.Previous;
+                        return indexStock == 0 ? EnumInput.None : EnumInput.Previous;
+                    }
+                case ConsoleKey.Enter:
+                    {
+                        return EnumInput.OpenOrder;
+                    }
+                case ConsoleKey.Tab:
+                    {
+                        return EnumInput.OpenStatus;
+                    }
+                case ConsoleKey.Spacebar:
+                    {
+                        return EnumInput.News;
+                    }
+                case ConsoleKey.Escape:
+                    {
+                        return EnumInput.Back;
                     }
                 default:
                     {
@@ -212,6 +282,22 @@ namespace Project_SushiBot
                     }
             }
         }
+        internal static void PageStatusOrder(string advertising, OrderInfo orderInfo, string textStock, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        {
+            Console.Clear();
+            Console.SetWindowSize(80, 30);
+            Console.SetBufferSize(80, 30);
+            titleStock = "АКЦИЯ - Летнее комбо от SUSHI BOT";
+            textStock = "Когда хочется всего и сразу. Выбери одну из 4-х комбинаций роллов, добавь один \nиз десертов на выбор и не забудь про напиток. Зеленый чай с цитрусом или черный\nчай с лесными ягодами. И это все по супер цене - всего за 29.90р.\n*комбо предложение не суммируется с другими скидками, дисконтами или акционными\n предложениями.\n";
+            Console.WriteLine(advertising);
+            Console.WriteLine("Вы вошли в акаунт. Добрый день {0} {1}\n"); //должны быть данные пользователя
+            Console.WriteLine(titleStock);
+            Console.WriteLine(textStock);
+            Console.WriteLine("Сдесь вы можете узнать о наших актуальных акциях, заказать суши с доставкой,  \nпроверить статус своих заказов, просмотреть новости.");
+            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
+            сursorPositionInputInfoRight = new СursorPosition(40, 23);
+        }
+
     }
     class PageInput
     {
@@ -382,7 +468,6 @@ namespace Project_SushiBot
     class AdvertisingsBanner
     {
         internal string[] Banners { get; }
-
         internal AdvertisingsBanner(string[] Banners)
         {
             this.Banners = Banners;

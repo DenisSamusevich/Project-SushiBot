@@ -18,6 +18,8 @@ namespace Project_SushiBot
         Exit = 7,
         SignUp = 8,
         News = 9,
+        OpenOrder = 10,
+        OpenStatus = 11,
     }
     enum EnumPage
     {
@@ -25,5 +27,14 @@ namespace Project_SushiBot
         SingUp = 1,
         RegisterNewUser = 2,
         News = 3,
+    }
+    enum EnumStatusOrder
+    {
+        WaitingForPayment,
+        OrderProcessing,
+        OrderMaking,
+        OrderDelivery,
+        OrderСompleted,
+        OrderСancelled
     }
 }
