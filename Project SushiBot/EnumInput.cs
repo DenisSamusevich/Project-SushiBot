@@ -20,6 +20,7 @@ namespace Project_SushiBot
         News = 9,
         OpenOrder = 10,
         OpenStatus = 11,
+        Refresh,
     }
     enum EnumPage
     {
@@ -35,6 +36,18 @@ namespace Project_SushiBot
         OrderMaking,
         OrderDelivery,
         OrderСompleted,
-        OrderСancelled
+        OrderСancelled,
+    }
+    enum Menu
+    {
+        Sets = 0,
+        Maki = 1,
+        Uramaki = 2,
+        Futomaki = 3,
+        Dessert = 4,
+        Nigiri = 5,
+        Gunkans = 6,
+        Soups = 7,
+        Drinks = 8,
     }
 }

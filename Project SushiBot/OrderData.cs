@@ -11,19 +11,106 @@ namespace Project_SushiBot
         DateTime DateOrder { get; }
         int NumberOrder { get; }
         Product[] Product { get; }
-        Price totalPrice { get; }
+        Price TotalPrice { get; }
         EnumStatusOrder EnumStatusOrder { get; }
+        Address Address { get; } 
+        int Phone { get; } 
+        internal void OrderDataWrite()
+        {
+            Console.WriteLine("Заказ №{0} был сформирова {1}", NumberOrder, DateOrder);
+            Console.WriteLine("В него входило:");
+            for (int i = 0; i < Product.Length; i++)
+            {
+                Console.Write(Product[i].Name);
+                Console.SetCursorPosition(25, Console.CursorTop);
+                Console.WriteLine("- "+Product[i].Price.ToString()+"Руб.");
+            }
+            Console.WriteLine("--------------------------------");
+            Console.Write("Итого:");
+            Console.SetCursorPosition(25, Console.CursorTop);
+            Console.WriteLine(TotalPrice.ToString() + "Руб.");
+            Console.WriteLine();
+            Console.WriteLine("Адрес доставки:");
+            Console.WriteLine(Address.ToString());
+            Console.Write("Статус заказа:");
+            Console.SetCursorPosition(15, Console.CursorTop);
+            Console.WriteLine(StatusOrder());
+        }
+        string StatusOrder()
+        {
+            string statusOrder = string.Empty;
+            switch (EnumStatusOrder)
+            {
+                case EnumStatusOrder.WaitingForPayment:
+                    {
+                        statusOrder = "Ожидание оплаты";
+                        break;
+                    }
+                case EnumStatusOrder.OrderProcessing:
+                    {
+                        statusOrder = "Заказ в обработке";
+                        break;
+                    }
+                case EnumStatusOrder.OrderMaking:
+                    {
+                        statusOrder = "Заказ комплектуется";
+                        break;
+                    }
+                case EnumStatusOrder.OrderDelivery:
+                    {
+                        statusOrder = "Заказ доставляется";
+                        break;
+                    }
+                case EnumStatusOrder.OrderСompleted:
+                    {
+                        statusOrder = "Заказ выполнен";
+                        break;
+                    }
+                case EnumStatusOrder.OrderСancelled:
+                    {
+                        statusOrder = "Заказ отменен";
+                        break;
+                    }
+            }
+            return statusOrder;
+        }
+
     }
     class Product
     {
-        string Name { get; }
+        internal string Name { get; }
         string Description { get; }
-        Price Price { get; }
-        int Amount { get; }
+        internal Price Price { get; }
+        internal int Amount { get; set; }
+        internal void ProductDataWrite()
+        {
+            Console.WriteLine(Name);
+            Console.WriteLine();
+            Console.WriteLine(Description);
+            Console.WriteLine();
+            Console.SetCursorPosition(0, 15);
+            Console.WriteLine("Цена:" + Price.ToString() + "Руб.");
+        }
     }
     struct Price
     {
-        int Ruble;
-        int Pennies;
+        int Ruble { get; }
+        int Pennies { get; }
+        public override string ToString()
+        {
+            string stringPrice = Ruble.ToString() + "," + Pennies.ToString();
+            return stringPrice;
+        }
+    }
+    struct Address
+    {
+        string Street { get; }
+        string House { get; }
+        string Apartment { get; }
+        public override string ToString()
+        {
+            string stringAddress = "Ул. " + Street + ", д. " + House + Apartment == string.Empty ? "." : (", кв. " + Apartment + ".");
+            return stringAddress;
+        }
     }
 }

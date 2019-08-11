@@ -9,23 +9,20 @@ namespace Project_SushiBot
 {
     class UserData
     {
-        private string UserEmail { get; } = string.Empty;
-        private string UserName { get; set; } = string.Empty;
-        private string UserSurname { get; set; } = string.Empty;
-        private string UserLogin { get; set; } = string.Empty;
-        private string UserPassword { get; set; } = string.Empty;
-        private string UserAddress { get; set; } = string.Empty;
-        private string UserPhone { get; set; } = string.Empty;
+        string UserEmail { get; } = string.Empty;
+        internal string UserName { get; } = string.Empty;
+        internal string UserSurname { get; } = string.Empty;
+        string UserLogin { get;} = string.Empty;
+        string UserPassword { get; set; } = string.Empty;
 
-        UserData(string userEmail, string userName, string userSurname, string userLogin, string userPassword, string userAddress, string userPhone)
+
+        UserData(string userEmail, string userName, string userSurname, string userLogin, string userPassword)
         {
             UserEmail = userEmail;
             UserName = userName;
             UserSurname = userSurname;
             UserLogin = userLogin;
             UserPassword = userPassword;
-            UserAddress = userAddress;
-            UserPhone = userPhone;
         }
         void RegisterNewUser()
         {
@@ -65,26 +62,6 @@ namespace Project_SushiBot
             //Console.WriteLine("Введите ваш email");
             //if (Regex.Match)
             return Password;
-        }
-        void UserChangeName()
-        {
-
-        }
-        void UserChangeSurname()
-        {
-
-        }
-        void UserChangeLogin()
-        {
-
-        }
-        void UserChangePassword()
-        {
-
-        }
-        void UserChangeAddress()
-        {
-
         }
         void UserChangePhone()
         {
