@@ -13,9 +13,9 @@ namespace Project_SushiBot
         Product[] Product { get; }
         Price TotalPrice { get; }
         EnumStatusOrder EnumStatusOrder { get; }
-        Address Address { get; } 
-        int Phone { get; } 
-        internal void OrderDataWrite()
+        Address Address { get; set; } 
+        int Phone { get; set; } 
+        internal void OrderDataWrite(bool fullInfo)
         {
             Console.WriteLine("Заказ №{0} был сформирова {1}", NumberOrder, DateOrder);
             Console.WriteLine("В него входило:");
@@ -30,11 +30,14 @@ namespace Project_SushiBot
             Console.SetCursorPosition(25, Console.CursorTop);
             Console.WriteLine(TotalPrice.ToString() + "Руб.");
             Console.WriteLine();
-            Console.WriteLine("Адрес доставки:");
-            Console.WriteLine(Address.ToString());
-            Console.Write("Статус заказа:");
-            Console.SetCursorPosition(15, Console.CursorTop);
-            Console.WriteLine(StatusOrder());
+            if (fullInfo)
+            {
+                Console.WriteLine("Адрес доставки:");
+                Console.WriteLine(Address.ToString());
+                Console.Write("Статус заказа:");
+                Console.SetCursorPosition(15, Console.CursorTop);
+                Console.WriteLine(StatusOrder());
+            }
         }
         string StatusOrder()
         {
