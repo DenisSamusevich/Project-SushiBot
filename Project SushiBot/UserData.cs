@@ -14,9 +14,8 @@ namespace Project_SushiBot
         internal string UserSurname { get; } = string.Empty;
         string UserLogin { get;} = string.Empty;
         string UserPassword { get; set; } = string.Empty;
-
-
-        UserData(string userEmail, string userName, string userSurname, string userLogin, string userPassword)
+        internal UserData() { }
+        internal UserData(string userEmail, string userName, string userSurname, string userLogin, string userPassword)
         {
             UserEmail = userEmail;
             UserName = userName;

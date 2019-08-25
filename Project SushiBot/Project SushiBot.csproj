@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdvertisingsBanner.cs" />
     <Compile Include="EnumInput.cs" />
     <Compile Include="OrderData.cs" />
     <Compile Include="PageProgram.cs" />

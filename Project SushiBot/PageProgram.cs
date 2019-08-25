@@ -9,26 +9,31 @@ namespace Project_SushiBot
 {
     class PageProgram
     {
-        internal static void PageGreeting(string advertising, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        СursorPosition CursorPositionInputInfoLeft { get; } = new СursorPosition(0, 23);
+        СursorPosition CursorPositionInputInfoRight { get; } = new СursorPosition(40, 23);
+        int CursorPositionLeftInfo { get; } = 50;
+        internal static void PageClear()
         {
             Console.Clear();
             Console.SetWindowSize(80, 30);
             Console.SetBufferSize(80, 30);
+        }
+        internal static void PageGreeting(string advertising)
+        {
+            PageClear();
             Console.WriteLine(advertising);
             Console.WriteLine("Вас приветствует СУШИБОТ");
             Console.WriteLine("Мы представляет ресторан суши с бесплатной доставкой на дом\n");
             Console.WriteLine("Если вы являетесь ценителем японской кухни, то не откажите себе в удовольствии \nи заказать вкуснейшие суши в Минске. На нашем сайте вы найдете широкий ассорти-\nмент роллов и сетов на любой вкус.  Все они сделаны из свежих продуктов и нату-\nральных ингредиентов. Над приготовлением работают настоящие мастера своего дела\nСуши - это оптимальный вариант правильного питания,  ведь каждый сет – это сба-\nлансированный состав медленных углеводов, белка и клетчатки.Фамилия:\n");
-            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
-            сursorPositionInputInfoRight = new СursorPosition(40, 23);
         }
-        internal EnumInput PageGreetingBottom(СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        internal EnumInput PageGreetingBottom()
         {
-            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("ENTER - Войти под своим логином");
             Console.WriteLine("TAB - Зарегестрироваться");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top);
             Console.WriteLine("SPACEBAR - Новости");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top + 1);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top + 1);
             Console.WriteLine("ESC - Выйти из программы");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             switch (consoleKeyInfo.Key)
@@ -55,28 +60,25 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageUserSingUp(string advertising, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        internal static void PageUserSingUp(string advertising, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword)
         {
-            Console.Clear();
-            Console.SetWindowSize(80, 30);
-            Console.SetBufferSize(80, 30);
+            PageClear();
             Console.WriteLine(advertising);
             Console.WriteLine("Вас приветствует окно входа пользователя пользователя");
             Console.WriteLine("Введите свой логин и пароль в форму\n");
-            Console.WriteLine("Login:\n");
-            сursorPositionLogin = new СursorPosition(8, 9);
-            Console.WriteLine("Password:\n");
-            сursorPositionPassword = new СursorPosition(11, 11);
-            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
-            сursorPositionInputInfoRight = new СursorPosition(40, 23);
+            Console.WriteLine("Login: ");
+            сursorPositionLogin = new СursorPosition(Console.CursorLeft, Console.CursorTop);
+            Console.WriteLine("Password: ");
+            сursorPositionPassword = new СursorPosition(Console.CursorLeft, Console.CursorTop);
+            Console.WriteLine("\n");
         }
-        internal EnumInput PageUserSingUpBottom(СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        internal EnumInput PageUserSingUpBottom()
         {
             //Метод повторяется с PageRegisterNewUserBottom
-            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("ENTER - Принять форму");
             Console.WriteLine("DELETE - Сбросить форму");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top);
             Console.WriteLine("ESC - Вернуться в предыдущее меню");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             switch (consoleKeyInfo.Key)
@@ -99,37 +101,37 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageRegisterNewUser(string advertising, out int CursorPositionLeftInfo, out СursorPosition сursorPositionSurname, out СursorPosition сursorPositionName, out СursorPosition сursorPositionEmail, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionRepeatPassword, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        internal static void PageRegisterNewUser(string advertising, out СursorPosition сursorPositionSurname, out СursorPosition сursorPositionName, out СursorPosition сursorPositionEmail, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionRepeatPassword)
         {
-            Console.Clear();
-            Console.SetWindowSize(80, 30);
-            Console.SetBufferSize(80, 30);
-            CursorPositionLeftInfo = 50;
+            PageClear();
             Console.WriteLine(advertising);
             Console.WriteLine("Вас приветствует окно регистрации нового пользователя");
             Console.WriteLine("Ниже расположена форма которую необходимо заполнить\n");
-            Console.WriteLine("Фамилия:\n");
-            сursorPositionSurname = new СursorPosition(9, 9);
-            Console.WriteLine("Имя:\n");
-            сursorPositionName = new СursorPosition(5, 11);
-            Console.WriteLine("Email*:\n");
-            сursorPositionEmail = new СursorPosition(8, 13);
-            Console.WriteLine("Login*:\n");
-            сursorPositionLogin = new СursorPosition(8, 15);
-            Console.WriteLine("Password*:\n");
-            сursorPositionPassword = new СursorPosition(11, 17);
-            Console.WriteLine("Повторите Password*:\n");
-            сursorPositionRepeatPassword = new СursorPosition(21, 19);
+            Console.Write("Фамилия: ");
+            сursorPositionSurname = new СursorPosition(Console.CursorLeft, Console.CursorTop);
+            Console.WriteLine("\n");
+            Console.Write("Имя: ");
+            сursorPositionName = new СursorPosition(Console.CursorLeft, Console.CursorTop);
+            Console.WriteLine("\n");
+            Console.Write("Email*: ");
+            сursorPositionEmail = new СursorPosition(Console.CursorLeft, Console.CursorTop);
+            Console.WriteLine("\n");
+            Console.Write("Login*: ");
+            сursorPositionLogin = new СursorPosition(Console.CursorLeft, Console.CursorTop);
+            Console.WriteLine("\n");
+            Console.Write("Password*: ");
+            сursorPositionPassword = new СursorPosition(Console.CursorLeft, Console.CursorTop);
+            Console.WriteLine("\n");
+            Console.Write("Повторите Password*: ");
+            сursorPositionRepeatPassword = new СursorPosition(Console.CursorLeft, Console.CursorTop);
             Console.WriteLine("Поля отмеченые * обязательны для заполнения");
-            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
-            сursorPositionInputInfoRight = new СursorPosition(40, 23);
         }
-        internal EnumInput PageRegisterNewUserBottom(СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        internal EnumInput PageRegisterNewUserBottom()
         {
-            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("ENTER - Принять форму");
             Console.WriteLine("DELETE - Сбросить форму");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top);
             Console.WriteLine("ESC - Вернуться в предыдущее меню");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             switch (consoleKeyInfo.Key)
@@ -152,42 +154,27 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageNews(string advertising, UserData userData, string newsTitle, string newsText, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        internal static void PageNews(string advertising, UserData userData, string newsTitle, string newsText) //Подправиь новости
         {
-            string pageTitle = "Новости";
-            Console.Clear();
-            Console.SetWindowSize(80, 30);
-            Console.SetBufferSize(80, 30);
+            PageClear();
             newsText = "Многие любители японской кухни задаются вопросом, что такое нори. Используются \nнори для суши в классической японской кухне, при приготовлении роллов. Это спе-\nциальные водоросли, в которые заворачивают рыбу, рис и прочие ингредиенты. При \nэтом важно понимать, что нори представляют собой натуральный продукт, полностью\nбезопасный и очень полезный для организма человека. Как правило, такие водорос-\nли используются при приготовлении большинства суши и роллов любого вида. Но все\nингредиенты должны быть отменного качества, только в таком случае гарантиру-\nется уникальный вкус и свойства японского блюда\n";
             newsTitle = "НОРИ ДЛЯ СУШИ\n";
             Console.WriteLine(advertising);
             Console.WriteLine("Добрый день {0} {1}\n", userData.UserName, userData.UserSurname);
-            Console.WriteLine(pageTitle);
+            Console.WriteLine("Новости");
             Console.WriteLine(newsTitle);
             Console.WriteLine(newsText);
-            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
-            сursorPositionInputInfoRight = new СursorPosition(40, 23);
-        }
-        internal static void PageNews(string advertising, string newsTitle, string newsText, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        }        
+        internal static void PageNews(string advertising, string newsTitle, string newsText)
         {
-            string pageTitle = "Новости";
-            Console.Clear();
-            Console.SetWindowSize(80, 30);
-            Console.SetBufferSize(80, 30);
-            newsText = "Многие любители японской кухни задаются вопросом, что такое нори. Используются \nнори для суши в классической японской кухне, при приготовлении роллов. Это спе-\nциальные водоросли, в которые заворачивают рыбу, рис и прочие ингредиенты. При \nэтом важно понимать, что нори представляют собой натуральный продукт, полностью\nбезопасный и очень полезный для организма человека. Как правило, такие водорос-\nли используются при приготовлении большинства суши и роллов любого вида. Но все\nингредиенты должны быть отменного качества, только в таком случае гарантиру-\nется уникальный вкус и свойства японского блюда\n";
-            newsTitle = "НОРИ ДЛЯ СУШИ\n";
-            Console.WriteLine(advertising);
-            Console.WriteLine(pageTitle);
-            Console.WriteLine(newsTitle);
-            Console.WriteLine(newsText);
-            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
-            сursorPositionInputInfoRight = new СursorPosition(40, 23);
+            UserData userData = new UserData();
+            PageNews(advertising, userData, newsTitle, newsText);
         }
-        internal EnumInput PageNewsBottom(int indexNews, int indexMaxNews, СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        internal EnumInput PageNewsBottom(int indexNews, int indexMaxNews)
         {
             string nextNews = "Стрелка влево - Следующая новость";
             string prewNews = "Стрелка вправо - Предыдущая новость";
-            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             if (indexNews == 0)
             {
                 nextNews = string.Empty;
@@ -198,10 +185,10 @@ namespace Project_SushiBot
             }
             Console.WriteLine(nextNews);
             Console.WriteLine(prewNews);
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top);
             Console.WriteLine("ENTER - Открыть ссылку в браузере");
             //Process.Start("E:\\LearnWeb\\start.html"); запись файла  и Запуск ссылки сделать
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top + 1);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top + 1);
             Console.WriteLine("ESC - Вернуться в предыдущее меню");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             switch (consoleKeyInfo.Key)
@@ -228,11 +215,9 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageProfile(string advertising, UserData userData, string titleStock, string textStock, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        internal static void PageProfile(string advertising, UserData userData, string titleStock, string textStock)
         {
-            Console.Clear();
-            Console.SetWindowSize(80, 30);
-            Console.SetBufferSize(80, 30);
+            PageClear();
             titleStock = "АКЦИЯ - Летнее комбо от SUSHI BOT";
             textStock = "Когда хочется всего и сразу. Выбери одну из 4-х комбинаций роллов, добавь один \nиз десертов на выбор и не забудь про напиток. Зеленый чай с цитрусом или черный\nчай с лесными ягодами. И это все по супер цене - всего за 29.90р.\n*комбо предложение не суммируется с другими скидками, дисконтами или акционными\n предложениями.\n";
             Console.WriteLine(advertising);
@@ -240,14 +225,12 @@ namespace Project_SushiBot
             Console.WriteLine(titleStock);
             Console.WriteLine(textStock);
             Console.WriteLine("Сдесь вы можете узнать о наших актуальных акциях, заказать суши с доставкой,  \nпроверить статус своих заказов, просмотреть новости.");
-            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
-            сursorPositionInputInfoRight = new СursorPosition(40, 23);
         }
-        internal EnumInput PageProfileBottom(int indexStock, int indexMaxStocks, СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        internal EnumInput PageProfileBottom(int indexStock, int indexMaxStocks)
         {
             string nextStock = "Стрелка влево - Следующая Акция";
             string prewStock = "Стрелка вправо - Предыдущая Акция";
-            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             if (indexStock == 0)
             {
                 nextStock = string.Empty;
@@ -259,11 +242,11 @@ namespace Project_SushiBot
             Console.WriteLine(nextStock);
             Console.WriteLine(prewStock);
             Console.WriteLine("ENTER - Заказать суши");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top);
             Console.WriteLine("TAB - Проверить статус заказа");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top + 1);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top + 1);
             Console.WriteLine("SPACEBAR - Новости");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top + 2);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top + 2);
             Console.WriteLine("ESC - Выйти из профиля");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             switch (consoleKeyInfo.Key)
@@ -298,23 +281,19 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageStatusOrder(string advertising, UserData userData, OrderData orderInfo, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        internal static void PageStatusOrder(string advertising, UserData userData, OrderData orderInfo)
         {
-            Console.Clear();
-            Console.SetWindowSize(80, 30);
-            Console.SetBufferSize(80, 30);
+            PageClear();
             Console.WriteLine(advertising);
             Console.WriteLine("Добрый день {0} {1}\n", userData.UserName, userData.UserSurname);
             Console.WriteLine("Тут вы можете узнать статус ваших заказов, а так же посмотреть историю заказов\n");
             orderInfo.OrderDataWrite(true);
-            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
-            сursorPositionInputInfoRight = new СursorPosition(40, 23);
         }
-        internal EnumInput PageStatusOrderBottom(int indexOrder, int indexMaxOrders, СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        internal EnumInput PageStatusOrderBottom(int indexOrder, int indexMaxOrders)
         {
             string nextOrder = "Стрелка влево - Следующая заказ";
             string prewOrder = "Стрелка вправо - Предыдущий заказ";
-            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             if (indexOrder == 0)
             {
                 nextOrder = string.Empty;
@@ -325,9 +304,9 @@ namespace Project_SushiBot
             }
             Console.WriteLine(nextOrder);
             Console.WriteLine(prewOrder);
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top);
             Console.WriteLine("ENTER - Обновить статус");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top + 1);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top + 1);
             Console.WriteLine("ESC - Вернуться в предыдущее меню");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             switch (consoleKeyInfo.Key)
@@ -354,11 +333,9 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageOrderSushi(string advertising, UserData userData, int indexMenuNow, Product product, out СursorPosition сursorPositionInputAmount, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        internal static void PageOrderSushi(string advertising, UserData userData, int indexMenuNow, Product product, out СursorPosition сursorPositionInputAmount)
         {
-            Console.Clear();
-            Console.SetWindowSize(80, 30);
-            Console.SetBufferSize(80, 30);
+            PageClear();
             Console.WriteLine(advertising);
             Console.WriteLine("Добрый день {0} {1}\n", userData.UserName, userData.UserSurname);
             string[] menu = new string[9] { "Сеты", "Маки", "Урамаки", "Футомаки", "Десерты", "Нигири", "Гунканы", "Супы", "Напитки" };
@@ -379,21 +356,19 @@ namespace Project_SushiBot
             Console.Write("Количество: ");
             сursorPositionInputAmount = new СursorPosition(Console.CursorLeft, Console.CursorTop);
             Console.Write(product.Amount);
-            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
-            сursorPositionInputInfoRight = new СursorPosition(40, 23);
         }
-        internal EnumInput PageOrderSushiBottom( СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        internal EnumInput PageOrderSushiBottom()
         {
-            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("Стрелка влево - Следующий раздел");
             Console.WriteLine("Стрелка вправо - Предыдущий раздел");
             Console.WriteLine("Стрелка вниз - Следующий продукт");
             Console.WriteLine("Стрелка вверх - Предыдущий продукт");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top);
             Console.WriteLine("TAB - Указать количество");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top+1);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top+1);
             Console.WriteLine("ENTER - Оформить заказ");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top + 2);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top + 2);
             Console.WriteLine("ESC - Вернуться в предыдущее меню");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             switch (consoleKeyInfo.Key)
@@ -433,24 +408,20 @@ namespace Project_SushiBot
             }
 
         }
-        internal static void PageRegistrationOrder(string advertising, UserData userData, OrderData orderInfo, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        internal static void PageRegistrationOrder(string advertising, UserData userData, OrderData orderInfo)
         {
-            Console.Clear();
-            Console.SetWindowSize(80, 30);
-            Console.SetBufferSize(80, 30);
+            PageClear();
             Console.WriteLine(advertising);
             Console.WriteLine("Добрый день {0} {1}\n", userData.UserName, userData.UserSurname);
             Console.WriteLine("Тут вы можете подтвердить список заказаных суши и оформить доставку\n");
             orderInfo.OrderDataWrite(false);
-            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
-            сursorPositionInputInfoRight = new СursorPosition(40, 23);
         }
-        internal EnumInput PageRegistrationOrderBottom(СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        internal EnumInput PageRegistrationOrderBottom()
         {
-            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("ENTER - Оформить заказ");
             Console.WriteLine("ESC - Сбросить заказ и вернуться в предыдущее меню");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top);
             Console.WriteLine("TAB - Указать количество");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             switch (consoleKeyInfo.Key)
@@ -473,11 +444,9 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageOrderEnd(string advertising, UserData userData, out СursorPosition сursorPositionInputStreet, out СursorPosition сursorPositionInputHouse,out СursorPosition сursorPositionInputApartment,  out СursorPosition сursorPositionInputPhone, out СursorPosition сursorPositionInputInfoLeft, out СursorPosition сursorPositionInputInfoRight)
+        internal static void PageOrderEnd(string advertising, UserData userData, out СursorPosition сursorPositionInputStreet, out СursorPosition сursorPositionInputHouse,out СursorPosition сursorPositionInputApartment,  out СursorPosition сursorPositionInputPhone)
         {
-            Console.Clear();
-            Console.SetWindowSize(80, 30);
-            Console.SetBufferSize(80, 30);
+            PageClear();
             Console.WriteLine(advertising);
             Console.WriteLine("Добрый день {0} {1}\n", userData.UserName, userData.UserSurname);
             Console.WriteLine("Ваш заказ сформирован, осталось только ввести адрес доставки и номер телефона.\n");
@@ -492,15 +461,13 @@ namespace Project_SushiBot
             Console.WriteLine("\n");
             Console.Write("Телефон: +375");
             сursorPositionInputPhone = new СursorPosition(Console.CursorLeft, Console.CursorTop);
-            сursorPositionInputInfoLeft = new СursorPosition(0, 23);
-            сursorPositionInputInfoRight = new СursorPosition(40, 23);
         }
-        internal EnumInput PageOrderEndBottom(СursorPosition сursorPositionInputInfoLeft, СursorPosition сursorPositionInputInfoRight)
+        internal EnumInput PageOrderEndBottom()
         {
-            Console.SetCursorPosition(сursorPositionInputInfoLeft.Left, сursorPositionInputInfoLeft.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("ENTER - Принять форму");
             Console.WriteLine("DELETE - Сбросить форму");
-            Console.SetCursorPosition(сursorPositionInputInfoRight.Left, сursorPositionInputInfoRight.Top);
+            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top);
             Console.WriteLine("ESC - Вернуться в предыдущее меню");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             switch (consoleKeyInfo.Key)
@@ -525,9 +492,7 @@ namespace Project_SushiBot
         }
         internal static void PageInfo(string advertising, string infoSystem)
         {
-            Console.Clear();
-            Console.SetWindowSize(80, 30);
-            Console.SetBufferSize(80, 30);
+            PageClear();
             Console.WriteLine(advertising);
             Console.WriteLine("\n\n\n");
             Console.SetCursorPosition(25, Console.CursorTop);
@@ -769,19 +734,6 @@ namespace Project_SushiBot
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Принято        ");
             return userPhone;
-        }
-    }
-    class AdvertisingsBanner
-    {
-        internal string[] Banners { get; }
-        internal AdvertisingsBanner(string[] Banners)
-        {
-            this.Banners = Banners;
-        }
-        internal string RandomBanner()
-        {
-            Random random = new Random();
-            return Banners[random.Next(0, Banners.Length)];
         }
     }
     internal struct СursorPosition
