@@ -9,7 +9,7 @@ namespace Project_SushiBot
     enum EnumInput
     {
         None = 0,
-        Enter = 1,
+        LogIn = 1,
         Back = 2,
         Reset = 3,
         OpenBrowser = 4,
@@ -29,8 +29,8 @@ namespace Project_SushiBot
     enum EnumPage
     {
         Greeting = 0,
-        SingUp = 1,
-        RegisterNewUser = 2,
+        LogIn = 1,
+        SingUp = 2,
         News = 3,
     }
     enum EnumStatusOrder

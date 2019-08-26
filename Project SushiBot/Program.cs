@@ -13,44 +13,69 @@ namespace Project_SushiBot
         static void Main(string[] args)
         {
 
-            Console.WriteLine(AdvertisingsBanner.Banners[1]);
-            Console.WriteLine(AdvertisingsBanner.Banners[2]);
-            Console.WriteLine(AdvertisingsBanner.Banners[3]);
-            Console.WriteLine(AdvertisingsBanner.Banners[4]);
-            Console.WriteLine(AdvertisingsBanner.Banners[5]);
-            Console.WriteLine(AdvertisingsBanner.Banners[AdvertisingsBanner.Banners.Length-1]);
-            Console.ReadLine();
-            ////Подгрузить банеры
-            //string[] Banners = new string[] { "*******************************************************************************\n*******************                                        ********************\n*********       А тут могла бы быть ваша реклама, но будет чужая     **********\n*********                 Казино Азино и всякая шляпа                **********\n*******************                                        ********************\n*******************************************************************************" }; 
-            //AdvertisingsBanner advertisingsBanner = new AdvertisingsBanner(Banners);
-            //EnumPage enumInput = EnumPage.Greeting;
-            //Start:
-            //switch (enumInput)
-            //{
-            //    case EnumPage.Greeting:
-            //        {
-            //            PageProgram.PageGreeting(advertisingsBanner.RandomBanner());
-            //            goto Start;
-            //        }
-            //    case EnumPage.News:
-            //        {
-            //            goto Start;
-            //        }
-            //    case EnumPage.RegisterNewUser:
-            //        {
-            //            goto Start;
-            //        }
-            //    case EnumPage.SingUp:
-            //        {
-            //            goto Start;
-            //        }
-            //}
+            //Подгрузить банеры
+            string[] Banners = new string[] { "*******************************************************************************\n*******************                                        ********************\n*********       А тут могла бы быть ваша реклама, но будет чужая     **********\n*********                 Казино Азино и всякая шляпа                **********\n*******************                                        ********************\n*******************************************************************************" };
+            EnumPage enumPage = EnumPage.Greeting;
+            EnumInput enumInputKey = EnumInput.None;
+            Start:
+            switch (enumPage)
+            {
+                case EnumPage.Greeting:
+                    {
+                        PageProgram.PageGreeting(AdvertisingsBanner.RandomBanner());
+                        StartPageGreeting:
+                        enumInputKey = PageProgram.PageGreetingBottom();
+                        switch (enumInputKey)
+                        {
+                            case EnumInput.LogIn:
+                                {
+                                    enumPage = EnumPage.LogIn;
+                                    break;
+                                }
+                            case EnumInput.SignUp:
+                                {
+                                    enumPage = EnumPage.SingUp;
+                                    break;
+                                }
+                            case EnumInput.News:
+                                {
+                                    enumPage = EnumPage.News;
+                                    break;
+                                }
+                            case EnumInput.Exit:
+                                {
+                                    enumPage = EnumPage.SingUp;
+                                    break;
+                                }
+                            default:
+                                {
+                                    goto StartPageGreeting;
+                                }
+                        }
+                        goto Start;
+                    }
+                case EnumPage.News:
+                    {
+                        PageProgram.PageNews(AdvertisingsBanner.RandomBanner(),);
+                        StartPageNews:
+
+                        goto Start;
+                    }
+                case EnumPage.RegisterNewUser:
+                    {
+                        goto Start;
+                    }
+                case EnumPage.SingUp:
+                    {
+                        goto Start;
+                    }
+            }
 
 
-            //PageProgram.PageRegisterNewUser(string.Empty, out int cursorPositionLeftInfo, out СursorPosition сursorPositionSurname, out СursorPosition сursorPositionName, out СursorPosition сursorPositionEmail, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionRepeatPassword);
-            //string userSurname = PageInput.InputSurname(cursorPositionLeftInfo, сursorPositionSurname);
-            //string userName = PageInput.InputName(cursorPositionLeftInfo, сursorPositionName);
-            //Console.Read();
+            PageProgram.PageRegisterNewUser(string.Empty, out int cursorPositionLeftInfo, out СursorPosition сursorPositionSurname, out СursorPosition сursorPositionName, out СursorPosition сursorPositionEmail, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionRepeatPassword);
+            string userSurname = PageInput.InputSurname(cursorPositionLeftInfo, сursorPositionSurname);
+            string userName = PageInput.InputName(cursorPositionLeftInfo, сursorPositionName);
+            Console.Read();
         }
     }
 }

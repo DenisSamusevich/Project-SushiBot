@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace Project_SushiBot
 {
-    class AdvertisingsBanner
+    class AdvertisingsBannerData
     {
-
-        static FileInfo File { get; } = new FileInfo(@"E:\LearnC#\File.txt");
+        static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory+ @"AdvertisingsData\Advertisings.txt");
         internal static string[] Banners { get; }
-        static AdvertisingsBanner()
+        static AdvertisingsBannerData()
         {
             Banners = AdvertisingsBannerReadFile(NumberAdvertisingsReadFile());
         }
-        internal string RandomBanner()
+        internal static string RandomBanner()
         {
             Random random = new Random();
             return Banners[random.Next(0, Banners.Length)];
@@ -25,11 +24,11 @@ namespace Project_SushiBot
         { 
             string stringLine = string.Empty;
             int numberAdvertisings = 0;
-            FileStream fs = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            StreamReader sw = new StreamReader(fs, Encoding.Default);
+            FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
             while (true)
             {
-                stringLine = sw.ReadLine();
+                stringLine = streamReader.ReadLine();
                 if (stringLine == null)
                 {
                     break;
@@ -39,13 +38,13 @@ namespace Project_SushiBot
                     numberAdvertisings += 1;
                 }
             }
-            sw.Close();
+            streamReader.Close();
             return numberAdvertisings;
         }
         internal static string[] AdvertisingsBannerReadFile(int numberAdvertisings)
         {
-            FileStream fs = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            StreamReader sw = new StreamReader(fs, Encoding.Default);
+            FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
             string[] returnAdvertisingsBanners = new string[numberAdvertisings];
             string stringLineRead = string.Empty;
             for (int i = 0; i < returnAdvertisingsBanners.Length; i++)
@@ -53,33 +52,19 @@ namespace Project_SushiBot
                 string[] stringAdvertisingBanner = new string[6];
                 while (true)
                 {
-                    stringLineRead = sw.ReadLine();
+                    stringLineRead = streamReader.ReadLine();
                     if (stringLineRead.Equals("start"))
                     {
                         for (int j = 0; j < 6; j++)
                         {
-                            stringAdvertisingBanner[j] = sw.ReadLine();
+                            stringAdvertisingBanner[j] = streamReader.ReadLine();
                         }
                         returnAdvertisingsBanners[i] = string.Join("\n", stringAdvertisingBanner);
                         break;
                     }
                 }
             }
-            sw.Close();
-            //int numberArray = 0;
-            //for (int i = 0; i < stringAdvertisingsBanners.Length; i++)
-            //{
-            //    if (stringAdvertisingsBanners[i] !=null)
-            //    {
-            //        numberArray += 1;
-            //    }
-                
-            //}
-            //string[] returnAdvertisingsBanners = new string[numberArray];
-            //for (int i = 0; i < returnAdvertisingsBanners.Length; i++)
-            //{
-            //    returnAdvertisingsBanners[i] = stringAdvertisingsBanners[i];
-            //}
+            streamReader.Close();
             return returnAdvertisingsBanners;
         }
     }

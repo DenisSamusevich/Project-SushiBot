@@ -7,17 +7,11 @@ using System.Threading.Tasks;
 
 namespace Project_SushiBot
 {
-    class PageProgram
+    static class PageProgram
     {
-        СursorPosition CursorPositionInputInfoLeft { get; } = new СursorPosition(0, 23);
-        СursorPosition CursorPositionInputInfoRight { get; } = new СursorPosition(40, 23);
-        int CursorPositionLeftInfo { get; } = 50;
-        internal static void PageClear()
-        {
-            Console.Clear();
-            Console.SetWindowSize(80, 30);
-            Console.SetBufferSize(80, 30);
-        }
+        static СursorPosition CursorPositionInputInfoLeft { get; } = new СursorPosition(0, 23);
+        static СursorPosition CursorPositionInputInfoRight { get; } = new СursorPosition(40, 23);
+        static int CursorPositionLeftInfo { get; } = 50;
         internal static void PageGreeting(string advertising)
         {
             PageClear();
@@ -26,7 +20,7 @@ namespace Project_SushiBot
             Console.WriteLine("Мы представляет ресторан суши с бесплатной доставкой на дом\n");
             Console.WriteLine("Если вы являетесь ценителем японской кухни, то не откажите себе в удовольствии \nи заказать вкуснейшие суши в Минске. На нашем сайте вы найдете широкий ассорти-\nмент роллов и сетов на любой вкус.  Все они сделаны из свежих продуктов и нату-\nральных ингредиентов. Над приготовлением работают настоящие мастера своего дела\nСуши - это оптимальный вариант правильного питания,  ведь каждый сет – это сба-\nлансированный состав медленных углеводов, белка и клетчатки.Фамилия:\n");
         }
-        internal EnumInput PageGreetingBottom()
+        internal static EnumInput PageGreetingBottom()
         {
             Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("ENTER - Войти под своим логином");
@@ -40,7 +34,7 @@ namespace Project_SushiBot
             {
                 case ConsoleKey.Enter:
                     {
-                        return EnumInput.Enter;
+                        return EnumInput.LogIn;
                     }
                 case ConsoleKey.Escape:
                     {
@@ -60,7 +54,7 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageUserSingUp(string advertising, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword)
+        internal static void PageUserLogIn(string advertising, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword)
         {
             PageClear();
             Console.WriteLine(advertising);
@@ -72,7 +66,7 @@ namespace Project_SushiBot
             сursorPositionPassword = new СursorPosition(Console.CursorLeft, Console.CursorTop);
             Console.WriteLine("\n");
         }
-        internal EnumInput PageUserSingUpBottom()
+        internal EnumInput PageUserLogInBottom()
         {
             //Метод повторяется с PageRegisterNewUserBottom
             Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
@@ -508,6 +502,12 @@ namespace Project_SushiBot
                 }
                 Console.Write('\u0008');
             }
+        }
+        internal static void PageClear()
+        {
+            Console.Clear();
+            Console.SetWindowSize(80, 30);
+            Console.SetBufferSize(80, 30);
         }
     }
     class PageInput
