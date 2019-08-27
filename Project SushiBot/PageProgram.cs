@@ -20,37 +20,37 @@ namespace Project_SushiBot
             Console.WriteLine("Мы представляет ресторан суши с бесплатной доставкой на дом\n");
             Console.WriteLine("Если вы являетесь ценителем японской кухни, то не откажите себе в удовольствии \nи заказать вкуснейшие суши в Минске. На нашем сайте вы найдете широкий ассорти-\nмент роллов и сетов на любой вкус.  Все они сделаны из свежих продуктов и нату-\nральных ингредиентов. Над приготовлением работают настоящие мастера своего дела\nСуши - это оптимальный вариант правильного питания,  ведь каждый сет – это сба-\nлансированный состав медленных углеводов, белка и клетчатки.Фамилия:\n");
         }
-        internal static EnumInput PageGreetingBottom()
+        internal static EnumPage PageGreetingBottom()
         {
             Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("ENTER - Войти под своим логином");
             Console.WriteLine("TAB - Зарегестрироваться");
             Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top);
-            Console.WriteLine("SPACEBAR - Новости");
-            Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top + 1);
             Console.WriteLine("ESC - Выйти из программы");
+            //Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top + 1);
+            //Console.WriteLine("SPACEBAR - Новости");
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             switch (consoleKeyInfo.Key)
             {
                 case ConsoleKey.Enter:
                     {
-                        return EnumInput.LogIn;
+                        return EnumPage.LogIn;
                     }
                 case ConsoleKey.Escape:
                     {
-                        return EnumInput.Exit;
+                        return EnumPage.Exit;
                     }
                 case ConsoleKey.Tab:
                     {
-                        return EnumInput.SignUp;
+                        return EnumPage.RegisterNewUser;
                     }
-                case ConsoleKey.Spacebar:
-                    {
-                        return EnumInput.News;
-                    }
+                //case ConsoleKey.Spacebar:
+                //    {
+                //        return EnumInput.News;
+                //    }
                 default:
                     {
-                        return EnumInput.None;
+                        return EnumPage.None;
                     }
             }
         }
@@ -66,7 +66,7 @@ namespace Project_SushiBot
             сursorPositionPassword = new СursorPosition(Console.CursorLeft, Console.CursorTop);
             Console.WriteLine("\n");
         }
-        internal EnumInput PageUserLogInBottom()
+        internal static EnumPage PageUserLogInBottom()
         {
             //Метод повторяется с PageRegisterNewUserBottom
             Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
@@ -79,19 +79,19 @@ namespace Project_SushiBot
             {
                 case ConsoleKey.Enter:
                     {
-                        return EnumInput.Enter;
+                        return EnumPage.Accept;
                     }
                 case ConsoleKey.Escape:
                     {
-                        return EnumInput.Back;
+                        return EnumPage.Greeting;
                     }
                 case ConsoleKey.Delete:
                     {
-                        return EnumInput.Reset;
+                        return EnumPage.Reset;
                     }
                 default:
                     {
-                        return EnumInput.None;
+                        return EnumPage.None;
                     }
             }
         }
@@ -120,7 +120,7 @@ namespace Project_SushiBot
             сursorPositionRepeatPassword = new СursorPosition(Console.CursorLeft, Console.CursorTop);
             Console.WriteLine("Поля отмеченые * обязательны для заполнения");
         }
-        internal EnumInput PageRegisterNewUserBottom()
+        internal static EnumPage PageRegisterNewUserBottom()
         {
             Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("ENTER - Принять форму");
@@ -132,19 +132,19 @@ namespace Project_SushiBot
             {
                 case ConsoleKey.Enter:
                     {
-                        return EnumInput.Enter;
+                        return EnumPage.Accept;
                     }
                 case ConsoleKey.Escape:
                     {
-                        return EnumInput.Back;
+                        return EnumPage.Greeting;
                     }
                 case ConsoleKey.Delete:
                     {
-                        return EnumInput.Reset;
+                        return EnumPage.Reset;
                     }
                 default:
                     {
-                        return EnumInput.None;
+                        return EnumPage.None;
                     }
             }
         }
@@ -159,12 +159,12 @@ namespace Project_SushiBot
             Console.WriteLine(newsTitle);
             Console.WriteLine(newsText);
         }        
-        internal static void PageNews(string advertising, string newsTitle, string newsText)
-        {
-            UserData userData = new UserData();
-            PageNews(advertising, userData, newsTitle, newsText);
-        }
-        internal EnumInput PageNewsBottom(int indexNews, int indexMaxNews)
+        //internal static void PageNews(string advertising, string newsTitle, string newsText)
+        //{
+        //    UserData userData = new UserData();
+        //    PageNews(advertising, userData, newsTitle, newsText);
+        //}
+        internal static EnumPage PageNewsBottom(int indexNews, int indexMaxNews)
         {
             string nextNews = "Стрелка влево - Следующая новость";
             string prewNews = "Стрелка вправо - Предыдущая новость";
@@ -189,52 +189,52 @@ namespace Project_SushiBot
             {
                 case ConsoleKey.RightArrow:
                     {
-                        return indexNews == indexMaxNews ? EnumInput.None : EnumInput.Previous;
+                        return indexNews == indexMaxNews ? EnumPage.None : EnumPage.PrevNews;
                     }
                 case ConsoleKey.LeftArrow:
                     {
-                        return indexNews == 0 ? EnumInput.None : EnumInput.Following;
+                        return indexNews == 0 ? EnumPage.None : EnumPage.NextNews;
                     }
                 case ConsoleKey.Enter:
                     {
-                        return EnumInput.OpenBrowser;
+                        return EnumPage.OpenBrowser;
                     }
                 case ConsoleKey.Escape:
                     {
-                        return EnumInput.Back;
+                        return EnumPage.Profile;
                     }
                 default:
                     {
-                        return EnumInput.None;
+                        return EnumPage.None;
                     }
             }
         }
-        internal static void PageProfile(string advertising, UserData userData, string titleStock, string textStock)
+        internal static void PageProfile(string advertising, UserData userData/*, string titleStock, string textStock*/)
         {
             PageClear();
-            titleStock = "АКЦИЯ - Летнее комбо от SUSHI BOT";
-            textStock = "Когда хочется всего и сразу. Выбери одну из 4-х комбинаций роллов, добавь один \nиз десертов на выбор и не забудь про напиток. Зеленый чай с цитрусом или черный\nчай с лесными ягодами. И это все по супер цене - всего за 29.90р.\n*комбо предложение не суммируется с другими скидками, дисконтами или акционными\n предложениями.\n";
+            //titleStock = "АКЦИЯ - Летнее комбо от SUSHI BOT";
+            //textStock = "Когда хочется всего и сразу. Выбери одну из 4-х комбинаций роллов, добавь один \nиз десертов на выбор и не забудь про напиток. Зеленый чай с цитрусом или черный\nчай с лесными ягодами. И это все по супер цене - всего за 29.90р.\n*комбо предложение не суммируется с другими скидками, дисконтами или акционными\n предложениями.\n";
             Console.WriteLine(advertising);
             Console.WriteLine("Добрый день {0} {1}\n", userData.UserName, userData.UserSurname);
-            Console.WriteLine(titleStock);
-            Console.WriteLine(textStock);
+            //Console.WriteLine(titleStock);
+            //Console.WriteLine(textStock);
             Console.WriteLine("Сдесь вы можете узнать о наших актуальных акциях, заказать суши с доставкой,  \nпроверить статус своих заказов, просмотреть новости.");
         }
-        internal EnumInput PageProfileBottom(int indexStock, int indexMaxStocks)
+        internal static EnumPage PageProfileBottom(int indexStock, int indexMaxStocks)
         {
-            string nextStock = "Стрелка влево - Следующая Акция";
-            string prewStock = "Стрелка вправо - Предыдущая Акция";
-            Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
-            if (indexStock == 0)
-            {
-                nextStock = string.Empty;
-            }
-            else if (indexStock == indexMaxStocks)
-            {
-                prewStock = string.Empty;
-            }
-            Console.WriteLine(nextStock);
-            Console.WriteLine(prewStock);
+            //string nextStock = "Стрелка влево - Следующая Акция";
+            //string prewStock = "Стрелка вправо - Предыдущая Акция";
+            //Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
+            //if (indexStock == 0)
+            //{
+            //    nextStock = string.Empty;
+            //}
+            //else if (indexStock == indexMaxStocks)
+            //{
+            //    prewStock = string.Empty;
+            //}
+            //Console.WriteLine(nextStock);
+            //Console.WriteLine(prewStock);
             Console.WriteLine("ENTER - Заказать суши");
             Console.SetCursorPosition(CursorPositionInputInfoRight.Left, CursorPositionInputInfoRight.Top);
             Console.WriteLine("TAB - Проверить статус заказа");
@@ -245,33 +245,33 @@ namespace Project_SushiBot
             ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
             switch (consoleKeyInfo.Key)
             {
-                case ConsoleKey.RightArrow:
-                    {
-                        return indexStock == indexMaxStocks ? EnumInput.None : EnumInput.Previous;
-                    }
-                case ConsoleKey.LeftArrow:
-                    {
-                        return indexStock == 0 ? EnumInput.None : EnumInput.Following;
-                    }
+                //case ConsoleKey.RightArrow:
+                //    {
+                //        return indexStock == indexMaxStocks ? EnumInput.None : EnumInput.Previous;
+                //    }
+                //case ConsoleKey.LeftArrow:
+                //    {
+                //        return indexStock == 0 ? EnumInput.None : EnumInput.Following;
+                //    }
                 case ConsoleKey.Enter:
                     {
-                        return EnumInput.OpenOrder;
+                        return EnumPage.OrderSushi;
                     }
                 case ConsoleKey.Tab:
                     {
-                        return EnumInput.OpenStatus;
+                        return EnumPage.StatusOrder;
                     }
                 case ConsoleKey.Spacebar:
                     {
-                        return EnumInput.News;
+                        return EnumPage.News;
                     }
                 case ConsoleKey.Escape:
                     {
-                        return EnumInput.Back;
+                        return EnumPage.Greeting;
                     }
                 default:
                     {
-                        return EnumInput.None;
+                        return EnumPage.None;
                     }
             }
         }
@@ -283,7 +283,7 @@ namespace Project_SushiBot
             Console.WriteLine("Тут вы можете узнать статус ваших заказов, а так же посмотреть историю заказов\n");
             orderInfo.OrderDataWrite(true);
         }
-        internal EnumInput PageStatusOrderBottom(int indexOrder, int indexMaxOrders)
+        internal static EnumPage PageStatusOrderBottom(int indexOrder, int indexMaxOrders)
         {
             string nextOrder = "Стрелка влево - Следующая заказ";
             string prewOrder = "Стрелка вправо - Предыдущий заказ";
@@ -307,23 +307,23 @@ namespace Project_SushiBot
             {
                 case ConsoleKey.RightArrow:
                     {
-                        return indexOrder == indexMaxOrders ? EnumInput.None : EnumInput.Previous;
+                        return indexOrder == indexMaxOrders ? EnumPage.None : EnumPage.PrevOrder;
                     }
                 case ConsoleKey.LeftArrow:
                     {
-                        return indexOrder == 0 ? EnumInput.None : EnumInput.Following;
+                        return indexOrder == 0 ? EnumPage.None : EnumPage.NextProduct;
                     }
                 case ConsoleKey.Enter:
                     {
-                        return EnumInput.Refresh;
+                        return EnumPage.Reset;
                     }
                 case ConsoleKey.Escape:
                     {
-                        return EnumInput.Back;
+                        return EnumPage.Profile;
                     }
                 default:
                     {
-                        return EnumInput.None;
+                        return EnumPage.None;
                     }
             }
         }
@@ -351,7 +351,7 @@ namespace Project_SushiBot
             сursorPositionInputAmount = new СursorPosition(Console.CursorLeft, Console.CursorTop);
             Console.Write(product.Amount);
         }
-        internal EnumInput PageOrderSushiBottom()
+        internal static EnumPage PageOrderSushiBottom()
         {
             Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("Стрелка влево - Следующий раздел");
@@ -369,35 +369,35 @@ namespace Project_SushiBot
             {
                 case ConsoleKey.RightArrow:
                     {
-                        return EnumInput.Previous;
+                        return EnumPage.NextProduct;
                     }
                 case ConsoleKey.LeftArrow:
                     {
-                        return EnumInput.Following;
+                        return EnumPage.PrevProduct;
                     }
                 case ConsoleKey.UpArrow:
                     {
-                        return EnumInput.UpProduct;
+                        return EnumPage.UpProduct;
                     }
                 case ConsoleKey.DownArrow:
                     {
-                        return EnumInput.DownProduct;
+                        return EnumPage.DownProduct;
                     }
                 case ConsoleKey.Enter:
                     {
-                        return EnumInput.Refresh;
+                        return EnumPage.RegistrationOrder;
                     }
                 case ConsoleKey.Escape:
                     {
-                        return EnumInput.Back;
+                        return EnumPage.Profile;
                     }
                 case ConsoleKey.Tab:
                     {
-                        return EnumInput.InputAmount;
+                        return EnumPage.Amount;
                     }
                 default:
                     {
-                        return EnumInput.None;
+                        return EnumPage.None;
                     }
             }
 
@@ -410,7 +410,7 @@ namespace Project_SushiBot
             Console.WriteLine("Тут вы можете подтвердить список заказаных суши и оформить доставку\n");
             orderInfo.OrderDataWrite(false);
         }
-        internal EnumInput PageRegistrationOrderBottom()
+        internal static EnumPage PageRegistrationOrderBottom()
         {
             Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("ENTER - Оформить заказ");
@@ -422,19 +422,19 @@ namespace Project_SushiBot
             {
                 case ConsoleKey.Enter:
                     {
-                        return EnumInput.RegistrationOrder;
+                        return EnumPage.OrderEnd;
                     }
                 case ConsoleKey.Escape:
                     {
-                        return EnumInput.Refresh;
+                        return EnumPage.OrderSushi;
                     }
                 case ConsoleKey.Tab:
                     {
-                        return EnumInput.InputAmount;
+                        return EnumPage.Amount;
                     }
                 default:
                     {
-                        return EnumInput.None;
+                        return EnumPage.None;
                     }
             }
         }
@@ -456,7 +456,7 @@ namespace Project_SushiBot
             Console.Write("Телефон: +375");
             сursorPositionInputPhone = new СursorPosition(Console.CursorLeft, Console.CursorTop);
         }
-        internal EnumInput PageOrderEndBottom()
+        internal static EnumPage PageOrderEndBottom()
         {
             Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("ENTER - Принять форму");
@@ -468,19 +468,19 @@ namespace Project_SushiBot
             {
                 case ConsoleKey.Enter:
                     {
-                        return EnumInput.Enter;
+                        return EnumPage.Accept;
                     }
                 case ConsoleKey.Escape:
                     {
-                        return EnumInput.Back;
+                        return EnumPage.RegistrationOrder;
                     }
                 case ConsoleKey.Delete:
                     {
-                        return EnumInput.Reset;
+                        return EnumPage.Reset;
                     }
                 default:
                     {
-                        return EnumInput.None;
+                        return EnumPage.None;
                     }
             }
         }
