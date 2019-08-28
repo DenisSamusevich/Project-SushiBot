@@ -30,7 +30,7 @@ namespace Project_SushiBot
     {
         None = 0,
         Greeting = 1,
-        LogIn = 2,
+        Login = 2,
         SingUp = 3,
         News = 4,
         RegisterNewUser = 5,

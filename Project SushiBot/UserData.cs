@@ -9,11 +9,11 @@ namespace Project_SushiBot
 {
     class UserData
     {
-        string UserEmail { get; } = string.Empty;
+        internal string UserEmail { get; } = string.Empty;
         internal string UserName { get; } = string.Empty;
         internal string UserSurname { get; } = string.Empty;
-        string UserLogin { get;} = string.Empty;
-        string UserPassword { get; set; } = string.Empty;
+        internal string UserLogin { get;} = string.Empty;
+        internal string UserPassword { get; } = string.Empty;
         internal UserData() { }
         internal UserData(string userEmail, string userName, string userSurname, string userLogin, string userPassword)
         {
@@ -23,49 +23,49 @@ namespace Project_SushiBot
             UserLogin = userLogin;
             UserPassword = userPassword;
         }
-        void RegisterNewUser()
-        {
-            Console.Clear();
-            Console.WriteLine("Вас приветствует окно регистрации нового пользователя");
-            Console.Write("Введите свою фамилию: ");
-            string userSurname = Console.ReadLine();
-            Console.Write("Введите свое имя: ");
-            string userName = Console.ReadLine();
-            Console.Write("Введите свою фамилию: ");
+        //void RegisterNewUser()
+        //{
+        //    Console.Clear();
+        //    Console.WriteLine("Вас приветствует окно регистрации нового пользователя");
+        //    Console.Write("Введите свою фамилию: ");
+        //    string userSurname = Console.ReadLine();
+        //    Console.Write("Введите свое имя: ");
+        //    string userName = Console.ReadLine();
+        //    Console.Write("Введите свою фамилию: ");
 
-        }
-        string ValidationInputEmail()
-        {
-            string userEmail = string.Empty;
-            //Console.WriteLine("Введите ваш email");
-            //if (Regex.Match)
-            return userEmail;
-        }
-        string ValidationInputPhone()
-        {
-            string userPhone = string.Empty;
-            //Console.WriteLine("Введите ваш email");
-            //if (Regex.Match)
-            return userPhone;
-        }
-        string ValidationInputLogin()
-        {
-            string userPhone = string.Empty;
-            //Console.WriteLine("Введите ваш email");
-            //if (Regex.Match)
-            return userPhone;
-        }
-        string ValidationInputPassword()
-        {
-            string Password = string.Empty;
-            //Console.WriteLine("Введите ваш email");
-            //if (Regex.Match)
-            return Password;
-        }
-        void UserChangePhone()
-        {
+        //}
+        //string ValidationInputEmail()
+        //{
+        //    string userEmail = string.Empty;
+        //    //Console.WriteLine("Введите ваш email");
+        //    //if (Regex.Match)
+        //    return userEmail;
+        //}
+        //string ValidationInputPhone()
+        //{
+        //    string userPhone = string.Empty;
+        //    //Console.WriteLine("Введите ваш email");
+        //    //if (Regex.Match)
+        //    return userPhone;
+        //}
+        //string ValidationInputLogin()
+        //{
+        //    string userPhone = string.Empty;
+        //    //Console.WriteLine("Введите ваш email");
+        //    //if (Regex.Match)
+        //    return userPhone;
+        //}
+        //string ValidationInputPassword()
+        //{
+        //    string Password = string.Empty;
+        //    //Console.WriteLine("Введите ваш email");
+        //    //if (Regex.Match)
+        //    return Password;
+        //}
+        //void UserChangePhone()
+        //{
 
-        }
+        //}
 
     }
 }

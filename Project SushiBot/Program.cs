@@ -12,69 +12,50 @@ namespace Project_SushiBot
     {
         static void Main(string[] args)
         {
-
-            //Подгрузить банеры
-            string[] Banners = new string[] { "*******************************************************************************\n*******************                                        ********************\n*********       А тут могла бы быть ваша реклама, но будет чужая     **********\n*********                 Казино Азино и всякая шляпа                **********\n*******************                                        ********************\n*******************************************************************************" };
+            string userLogin = string.Empty;
             EnumPage enumPage = EnumPage.Greeting;
-            EnumInput enumInputKey = EnumInput.None;
             Start:
             switch (enumPage)
             {
                 case EnumPage.Greeting:
                     {
-                        PageProgram.PageGreeting(AdvertisingsBanner.RandomBanner());
-                        StartPageGreeting:
-                        enumInputKey = PageProgram.PageGreetingBottom();
-                        switch (enumInputKey)
-                        {
-                            case EnumInput.LogIn:
-                                {
-                                    enumPage = EnumPage.LogIn;
-                                    break;
-                                }
-                            case EnumInput.SignUp:
-                                {
-                                    enumPage = EnumPage.SingUp;
-                                    break;
-                                }
-                            case EnumInput.News:
-                                {
-                                    enumPage = EnumPage.News;
-                                    break;
-                                }
-                            case EnumInput.Exit:
-                                {
-                                    enumPage = EnumPage.SingUp;
-                                    break;
-                                }
-                            default:
-                                {
-                                    goto StartPageGreeting;
-                                }
-                        }
+                        PageProgram.PageGreeting(AdvertisingsBannerDataBase.RandomBanner());
+                    StartPageGreeting:
+                        enumPage = PageProgram.PageGreetingBottom();
+                        //
                         goto Start;
                     }
-                case EnumPage.News:
+                case EnumPage.Login:
                     {
-                        PageProgram.PageNews(AdvertisingsBanner.RandomBanner(),);
-                        StartPageNews:
-
+                        PageProgram.PageUserLogin(AdvertisingsBannerDataBase.RandomBanner(),out СursorPosition сursorPositionLogin,out СursorPosition сursorPositionPassword);
+                        userLogin = PageInput.InputLogin(сursorPositionLogin);
+                        PageInput.InputPassword(сursorPositionPassword, userLogin);
+                        enumPage = PageProgram.PageUserLoginBottom();
+                        //
                         goto Start;
                     }
                 case EnumPage.RegisterNewUser:
                     {
+                        PageProgram.PageRegisterNewUser(AdvertisingsBannerDataBase.RandomBanner(), out СursorPosition сursorPositionRegisterSurname, out СursorPosition сursorPositionRegisterName, out СursorPosition сursorPositionRegisterEmail, out СursorPosition сursorPositionRegisterLogin, out СursorPosition сursorPositionRegisterPassword, out СursorPosition сursorPositionRegisterRepeatPassword);
+                        string newUserSurname = PageInput.InputRegistrationSurname(сursorPositionRegisterSurname);
+                        string newUserName = PageInput.InputRegistrationName(сursorPositionRegisterName);
+                        string newUserEmail = PageInput.InputRegistrationEmail(сursorPositionRegisterEmail);
+                        string newUserLogin = PageInput.InputRegistrationLogin(сursorPositionRegisterLogin);
+                        string newUserPassword = PageInput.InputRegistrationPassword(сursorPositionRegisterPassword, сursorPositionRegisterRepeatPassword);
+                        enumPage = PageProgram.PageUserLoginBottom();
+                        //
                         goto Start;
                     }
-                case EnumPage.SingUp:
+                case EnumPage.News:
                     {
+                        PageProgram.PageNews(AdvertisingsBannerDataBase.RandomBanner(), UserDataRepository.GetUserDataByLogin(userLogin),);
+                        //
                         goto Start;
                     }
             }
 
 
-            PageProgram.PageRegisterNewUser(string.Empty, out int cursorPositionLeftInfo, out СursorPosition сursorPositionSurname, out СursorPosition сursorPositionName, out СursorPosition сursorPositionEmail, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword, out СursorPosition сursorPositionRepeatPassword);
-            string userSurname = PageInput.InputSurname(cursorPositionLeftInfo, сursorPositionSurname);
-            string userName = PageInput.InputName(cursorPositionLeftInfo, сursorPositionName);
+
             Console.Read();
         }
     }

@@ -11,7 +11,7 @@ namespace Project_SushiBot
     {
         static СursorPosition CursorPositionInputInfoLeft { get; } = new СursorPosition(0, 23);
         static СursorPosition CursorPositionInputInfoRight { get; } = new СursorPosition(40, 23);
-        static int CursorPositionLeftInfo { get; } = 50;
+        internal static int CursorPositionLeftInfo { get; } = 50;
         internal static void PageGreeting(string advertising)
         {
             PageClear();
@@ -34,7 +34,7 @@ namespace Project_SushiBot
             {
                 case ConsoleKey.Enter:
                     {
-                        return EnumPage.LogIn;
+                        return EnumPage.Login;
                     }
                 case ConsoleKey.Escape:
                     {
@@ -54,7 +54,7 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageUserLogIn(string advertising, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword)
+        internal static void PageUserLogin(string advertising, out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword)
         {
             PageClear();
             Console.WriteLine(advertising);
@@ -66,7 +66,7 @@ namespace Project_SushiBot
             сursorPositionPassword = new СursorPosition(Console.CursorLeft, Console.CursorTop);
             Console.WriteLine("\n");
         }
-        internal static EnumPage PageUserLogInBottom()
+        internal static EnumPage PageUserLoginBottom()
         {
             //Метод повторяется с PageRegisterNewUserBottom
             Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
@@ -512,9 +512,9 @@ namespace Project_SushiBot
     }
     class PageInput
     {
-        internal static string InputSurname(int cursorPositionLeftInfo, СursorPosition сursorPositionSurname)
+        internal static string InputRegistrationSurname(СursorPosition сursorPositionSurname)
         {
-            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionSurname.Top);
+            СursorPosition cursorPositionInfo = new СursorPosition(PageProgram.CursorPositionLeftInfo, сursorPositionSurname.Top);
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Введите фамилию");
             Console.SetCursorPosition(сursorPositionSurname.Left, сursorPositionSurname.Top);
@@ -523,9 +523,9 @@ namespace Project_SushiBot
             Console.Write("Принято        ");
             return userSurname;
         }
-        internal static string InputName(int cursorPositionLeftInfo, СursorPosition сursorPositionName)
+        internal static string InputRegistrationName(СursorPosition сursorPositionName)
         {
-            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionName.Top);
+            СursorPosition cursorPositionInfo = new СursorPosition(PageProgram.CursorPositionLeftInfo, сursorPositionName.Top);
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Введите имя");
             Console.SetCursorPosition(сursorPositionName.Left, сursorPositionName.Top);
@@ -534,13 +534,11 @@ namespace Project_SushiBot
             Console.Write("Принято        ");
             return userName;
         }
-        internal static string InputEmail(int cursorPositionLeftInfo, СursorPosition сursorPositionEmail)
+        internal static string InputRegistrationEmail(СursorPosition сursorPositionEmail)
         {
-            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionEmail.Top);
+            СursorPosition cursorPositionInfo = new СursorPosition(PageProgram.CursorPositionLeftInfo, сursorPositionEmail.Top);
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Введите email");
-            //считывание емалов с базы
-            string[] basaEmail = new string[5] { "samynchik@mail.com", "kc29hc0e@yandex.ru", "myrfqpb@mail.ru", "copaa6@gmail.com", "xl9bc5@gmail.com" };
             string userEmail = string.Empty;
             while (true)
             {
@@ -553,18 +551,12 @@ namespace Project_SushiBot
                     Console.Write("Не корректное значение");
                     continue;
                 }
-                int j = 0;
-                for (int i = 0; i < basaEmail.Length; i++)
+                if (UserDataRepository.GetUserDataByEmail(userEmail).UserLogin.Equals(userEmail, StringComparison.Ordinal))
                 {
-                    if (basaEmail[i].Equals(userEmail,StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
-                        Console.Write("Такой email уже существует");
-                        break;
-                    }
-                    j++;
+                    Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+                    Console.Write("Такой email уже существует");
                 }
-                if (j == basaEmail.Length)
+                else
                 {
                     break;
                 }
@@ -573,30 +565,22 @@ namespace Project_SushiBot
             Console.Write("Принято        ");
             return userEmail;
         }
-        internal static string InputLogin(int cursorPositionLeftInfo, СursorPosition сursorPositionLogin)
+        internal static string InputRegistrationLogin(СursorPosition сursorPositionLogin)
         {
-            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionLogin.Top);
+            СursorPosition cursorPositionInfo = new СursorPosition(PageProgram.CursorPositionLeftInfo, сursorPositionLogin.Top);
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Введите свой login");
-            //считывание логинов с базы
-            string[] basaLogin = new string[5] { "samyn", "yandex", "komaro", "Vasia", "Valera" };
             string userLogin = string.Empty;
             while (true)
             {
                 Console.SetCursorPosition(сursorPositionLogin.Left, сursorPositionLogin.Top);
                 userLogin = Console.ReadLine();
-                int j = 0;
-                for (int i = 0; i < basaLogin.Length; i++)
+                if (UserDataRepository.GetUserDataByLogin(userLogin).UserLogin.Equals(userLogin,StringComparison.Ordinal))
                 {
-                    if (basaLogin[i].Equals(userLogin, StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
-                        Console.Write("Такой login уже существует");
-                        break;
-                    }
-                    j++;
+                    Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+                    Console.Write("Такой login уже существует");
                 }
-                if (j == basaLogin.Length)
+                else
                 {
                     break;
                 }
@@ -605,9 +589,34 @@ namespace Project_SushiBot
             Console.Write("Принято        ");
             return userLogin;
         }
-        internal static string InputPassword(int cursorPositionLeftInfo, СursorPosition сursorPositionPassword, СursorPosition сursorPositionRepeatPassword)
+        internal static string InputLogin(СursorPosition сursorPositionLogin)
         {
-            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionPassword.Top);
+            СursorPosition cursorPositionInfo = new СursorPosition(PageProgram.CursorPositionLeftInfo, сursorPositionLogin.Top);
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Введите свой login");
+            string userLogin = string.Empty;
+            while (true)
+            {
+                Console.SetCursorPosition(сursorPositionLogin.Left, сursorPositionLogin.Top);
+                userLogin = Console.ReadLine();
+                if (UserDataRepository.GetUserDataByLogin(userLogin).UserLogin.Equals(userLogin, StringComparison.Ordinal))
+                {
+                    Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+                    Console.Write("Принято        ");
+                    break;
+                }
+                else
+                {
+                    Console.Write("Нет такого login в Базе");
+                }
+            }
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Принято        ");
+            return userLogin;
+        }
+        internal static string InputRegistrationPassword(СursorPosition сursorPositionPassword, СursorPosition сursorPositionRepeatPassword)
+        {
+            СursorPosition cursorPositionInfo = new СursorPosition(PageProgram.CursorPositionLeftInfo, сursorPositionPassword.Top);
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Введите пароль");
             string userPassword = string.Empty;
@@ -634,7 +643,7 @@ namespace Project_SushiBot
                 }
                 else
                 {
-                    if (InputRepeatPassword(cursorPositionLeftInfo, сursorPositionRepeatPassword, userPassword))
+                    if (InputRegistrationRepeatPassword(сursorPositionRepeatPassword, userPassword))
                     {
                         break;
                     }
@@ -651,9 +660,32 @@ namespace Project_SushiBot
             Console.Write("           ");
             return userPassword;
         }
-        internal static bool InputRepeatPassword(int cursorPositionLeftInfo, СursorPosition сursorPositionRepeatPassword,string userPassword)
+        internal static void InputPassword(СursorPosition сursorPositionPassword, string userLogin)
         {
-            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionRepeatPassword.Top);
+            СursorPosition cursorPositionInfo = new СursorPosition(PageProgram.CursorPositionLeftInfo, сursorPositionPassword.Top);
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Введите пароль");
+            string userPassword = string.Empty;
+            while (true)
+            {
+                Console.SetCursorPosition(сursorPositionPassword.Left, сursorPositionPassword.Top);
+                userPassword = Console.ReadLine();
+                Console.SetCursorPosition(сursorPositionPassword.Left, сursorPositionPassword.Top);
+                for (int i = 0; i < userPassword.Length; i++)
+                {
+                    Console.Write("*");
+                }
+                if (UserDataRepository.GetUserDataByLogin(userLogin).UserPassword.Equals(userPassword, StringComparison.Ordinal)) 
+                {
+                    break;
+                }
+            }
+            Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
+            Console.Write("Принято        ");
+        }
+        internal static bool InputRegistrationRepeatPassword(СursorPosition сursorPositionRepeatPassword,string userPassword)
+        {
+            СursorPosition cursorPositionInfo = new СursorPosition(PageProgram.CursorPositionLeftInfo, сursorPositionRepeatPassword.Top);
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Повторите пароль");
             Console.SetCursorPosition(сursorPositionRepeatPassword.Left, сursorPositionRepeatPassword.Top);
@@ -675,9 +707,9 @@ namespace Project_SushiBot
                 return false;
             }
         }
-        internal static string InputStreet(int cursorPositionLeftInfo, СursorPosition сursorPositionStreet)
+        internal static string InputStreet(СursorPosition сursorPositionStreet)
         {
-            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionStreet.Top);
+            СursorPosition cursorPositionInfo = new СursorPosition(PageProgram.CursorPositionLeftInfo, сursorPositionStreet.Top);
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Введите улицу");
             Console.SetCursorPosition(сursorPositionStreet.Left, сursorPositionStreet.Top);
@@ -686,9 +718,9 @@ namespace Project_SushiBot
             Console.Write("Принято        ");
             return userStreet;
         }
-        internal static string InputHouse(int cursorPositionLeftInfo, СursorPosition сursorPositionHouse)
+        internal static string InputHouse(СursorPosition сursorPositionHouse)
         {
-            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionHouse.Top);
+            СursorPosition cursorPositionInfo = new СursorPosition(PageProgram.CursorPositionLeftInfo, сursorPositionHouse.Top);
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Введите номер дома");
             Console.SetCursorPosition(сursorPositionHouse.Left, сursorPositionHouse.Top);
@@ -697,9 +729,9 @@ namespace Project_SushiBot
             Console.Write("Принято        ");
             return userHouse;
         }
-        internal static string InputApartment(int cursorPositionLeftInfo, СursorPosition сursorPositionApartment)
+        internal static string InputApartment(СursorPosition сursorPositionApartment)
         {
-            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionApartment.Top);
+            СursorPosition cursorPositionInfo = new СursorPosition(PageProgram.CursorPositionLeftInfo, сursorPositionApartment.Top);
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Введите номер квартиры");
             Console.SetCursorPosition(сursorPositionApartment.Left, сursorPositionApartment.Top);
@@ -708,9 +740,9 @@ namespace Project_SushiBot
             Console.Write("Принято        ");
             return userApartment;
         }
-        internal static string InputPhone(int cursorPositionLeftInfo, СursorPosition сursorPositionPhone)
+        internal static string InputPhone(СursorPosition сursorPositionPhone)
         {
-            СursorPosition cursorPositionInfo = new СursorPosition(cursorPositionLeftInfo, сursorPositionPhone.Top);
+            СursorPosition cursorPositionInfo = new СursorPosition(PageProgram.CursorPositionLeftInfo, сursorPositionPhone.Top);
             Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
             Console.Write("Введите номер своего телефона");
             Console.SetCursorPosition(сursorPositionPhone.Left, сursorPositionPhone.Top);

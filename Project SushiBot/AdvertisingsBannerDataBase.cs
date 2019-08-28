@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Project_SushiBot
 {
-    class AdvertisingsBannerData
+    class AdvertisingsBannerDataBase
     {
         static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory+ @"AdvertisingsData\Advertisings.txt");
         internal static string[] Banners { get; }
-        static AdvertisingsBannerData()
+        static AdvertisingsBannerDataBase()
         {
             Banners = AdvertisingsBannerReadFile(NumberAdvertisingsReadFile());
         }
@@ -22,18 +22,18 @@ namespace Project_SushiBot
         }
         internal static int NumberAdvertisingsReadFile()
         { 
-            string stringLine = string.Empty;
+            string stringLineRead = string.Empty;
             int numberAdvertisings = 0;
             FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
             StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
             while (true)
             {
-                stringLine = streamReader.ReadLine();
-                if (stringLine == null)
+                stringLineRead = streamReader.ReadLine();
+                if (stringLineRead == null)
                 {
                     break;
                 }
-                else if (stringLine.Equals("start"))
+                else if (stringLineRead.Equals("start", StringComparison.Ordinal))
                 {
                     numberAdvertisings += 1;
                 }
