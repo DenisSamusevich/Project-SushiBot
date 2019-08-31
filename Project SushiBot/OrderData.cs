@@ -10,8 +10,8 @@ namespace Project_SushiBot
     {
         DateTime DateOrder { get; }
         int NumberOrder { get; }
-        Product[] Product { get; }
-        Price TotalPrice { get; }
+        ProductDataOrder[] Product { get; }
+        double TotalPrice { get; }
         EnumStatusOrder EnumStatusOrder { get; }
         Address Address { get; set; } 
         int Phone { get; set; } 
@@ -23,7 +23,8 @@ namespace Project_SushiBot
             {
                 Console.Write(Product[i].Name);
                 Console.SetCursorPosition(25, Console.CursorTop);
-                Console.WriteLine("- "+Product[i].Price.ToString()+"Руб.");
+                Console.WriteLine(Product[i].Amount.ToString()+" шт. - ");
+                Console.WriteLine(Product[i].Price.ToString()+"Руб.");
             }
             Console.WriteLine("--------------------------------");
             Console.Write("Итого:");
@@ -76,33 +77,6 @@ namespace Project_SushiBot
                     }
             }
             return statusOrder;
-        }
-
-    }
-    class Product
-    {
-        internal string Name { get; }
-        string Description { get; }
-        internal Price Price { get; }
-        internal int Amount { get; set; }
-        internal void ProductDataWrite()
-        {
-            Console.WriteLine(Name);
-            Console.WriteLine();
-            Console.WriteLine(Description);
-            Console.WriteLine();
-            Console.SetCursorPosition(0, 15);
-            Console.WriteLine("Цена:" + Price.ToString() + "Руб.");
-        }
-    }
-    struct Price
-    {
-        int Ruble { get; }
-        int Pennies { get; }
-        public override string ToString()
-        {
-            string stringPrice = Ruble.ToString() + "," + Pennies.ToString();
-            return stringPrice;
         }
     }
     struct Address

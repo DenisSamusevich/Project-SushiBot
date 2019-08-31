@@ -10,15 +10,15 @@ namespace Project_SushiBot
     {
         public static UserData[] GetUserData()
         {
-            return UserDataBase.UsersData;
+            return UserDataBase.AllUserData;
         }
-        public static UserData GetUserDataByLogin(string userLogin)
+        public static UserData GetUserDataByLogin(string login)
         {
-            return UserDataBase.FindLogin(userLogin);
+            return UserDataBase.FindLogin(login);
         }
-        public static UserData GetUserDataByEmail(string userEmail)
+        public static UserData GetUserDataByEmail(string email)
         {
-            return UserDataBase.FindEmail(userEmail);
+            return UserDataBase.FindEmail(email);
         }
         public static void CreateUserData(UserData usersData)
         {

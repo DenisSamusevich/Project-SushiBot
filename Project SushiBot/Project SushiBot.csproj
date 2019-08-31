@@ -47,8 +47,15 @@
     <Compile Include="ConfigInfo.cs" />
     <Compile Include="EnumInput.cs" />
     <Compile Include="NewsData.cs" />
+    <Compile Include="NewsDataBase.cs" />
+    <Compile Include="NewsDataRepository.cs" />
     <Compile Include="OrderData.cs" />
     <Compile Include="PageProgram.cs" />
+    <Compile Include="Price.cs" />
+    <Compile Include="ProductData.cs" />
+    <Compile Include="ProductDataBase.cs" />
+    <Compile Include="ProductDataRepository.cs" />
+    <Compile Include="ProductDataOrder.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserData.cs" />

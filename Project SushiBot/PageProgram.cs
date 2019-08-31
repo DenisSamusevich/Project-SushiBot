@@ -154,7 +154,7 @@ namespace Project_SushiBot
             newsText = "Многие любители японской кухни задаются вопросом, что такое нори. Используются \nнори для суши в классической японской кухне, при приготовлении роллов. Это спе-\nциальные водоросли, в которые заворачивают рыбу, рис и прочие ингредиенты. При \nэтом важно понимать, что нори представляют собой натуральный продукт, полностью\nбезопасный и очень полезный для организма человека. Как правило, такие водорос-\nли используются при приготовлении большинства суши и роллов любого вида. Но все\nингредиенты должны быть отменного качества, только в таком случае гарантиру-\nется уникальный вкус и свойства японского блюда\n";
             newsTitle = "НОРИ ДЛЯ СУШИ\n";
             Console.WriteLine(advertising);
-            Console.WriteLine("Добрый день {0} {1}\n", userData.UserName, userData.UserSurname);
+            Console.WriteLine("Добрый день {0} {1}\n", userData.Name, userData.Surname);
             Console.WriteLine("Новости");
             Console.WriteLine(newsTitle);
             Console.WriteLine(newsText);
@@ -215,7 +215,7 @@ namespace Project_SushiBot
             //titleStock = "АКЦИЯ - Летнее комбо от SUSHI BOT";
             //textStock = "Когда хочется всего и сразу. Выбери одну из 4-х комбинаций роллов, добавь один \nиз десертов на выбор и не забудь про напиток. Зеленый чай с цитрусом или черный\nчай с лесными ягодами. И это все по супер цене - всего за 29.90р.\n*комбо предложение не суммируется с другими скидками, дисконтами или акционными\n предложениями.\n";
             Console.WriteLine(advertising);
-            Console.WriteLine("Добрый день {0} {1}\n", userData.UserName, userData.UserSurname);
+            Console.WriteLine("Добрый день {0} {1}\n", userData.Name, userData.Surname);
             //Console.WriteLine(titleStock);
             //Console.WriteLine(textStock);
             Console.WriteLine("Сдесь вы можете узнать о наших актуальных акциях, заказать суши с доставкой,  \nпроверить статус своих заказов, просмотреть новости.");
@@ -279,7 +279,7 @@ namespace Project_SushiBot
         {
             PageClear();
             Console.WriteLine(advertising);
-            Console.WriteLine("Добрый день {0} {1}\n", userData.UserName, userData.UserSurname);
+            Console.WriteLine("Добрый день {0} {1}\n", userData.Name, userData.Surname);
             Console.WriteLine("Тут вы можете узнать статус ваших заказов, а так же посмотреть историю заказов\n");
             orderInfo.OrderDataWrite(true);
         }
@@ -327,11 +327,11 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageOrderSushi(string advertising, UserData userData, int indexMenuNow, Product product, out СursorPosition сursorPositionInputAmount)
+        internal static void PageOrderSushi(string advertising, UserData userData, int indexMenuNow, ProductData product, int Amount, out СursorPosition сursorPositionInputAmount)
         {
             PageClear();
             Console.WriteLine(advertising);
-            Console.WriteLine("Добрый день {0} {1}\n", userData.UserName, userData.UserSurname);
+            Console.WriteLine("Добрый день {0} {1}\n", userData.Name, userData.Surname);
             string[] menu = new string[9] { "Сеты", "Маки", "Урамаки", "Футомаки", "Десерты", "Нигири", "Гунканы", "Супы", "Напитки" };
             Console.SetCursorPosition(20, 7);
             Console.WriteLine("Меню");
@@ -349,7 +349,7 @@ namespace Project_SushiBot
             product.ProductDataWrite();
             Console.Write("Количество: ");
             сursorPositionInputAmount = new СursorPosition(Console.CursorLeft, Console.CursorTop);
-            Console.Write(product.Amount);
+            Console.Write(Amount);
         }
         internal static EnumPage PageOrderSushiBottom()
         {
@@ -406,7 +406,7 @@ namespace Project_SushiBot
         {
             PageClear();
             Console.WriteLine(advertising);
-            Console.WriteLine("Добрый день {0} {1}\n", userData.UserName, userData.UserSurname);
+            Console.WriteLine("Добрый день {0} {1}\n", userData.Name, userData.Surname);
             Console.WriteLine("Тут вы можете подтвердить список заказаных суши и оформить доставку\n");
             orderInfo.OrderDataWrite(false);
         }
@@ -442,7 +442,7 @@ namespace Project_SushiBot
         {
             PageClear();
             Console.WriteLine(advertising);
-            Console.WriteLine("Добрый день {0} {1}\n", userData.UserName, userData.UserSurname);
+            Console.WriteLine("Добрый день {0} {1}\n", userData.Name, userData.Surname);
             Console.WriteLine("Ваш заказ сформирован, осталось только ввести адрес доставки и номер телефона.\n");
             Console.Write("Улица: ");
             сursorPositionInputStreet = new СursorPosition(Console.CursorLeft, Console.CursorTop);
@@ -551,7 +551,7 @@ namespace Project_SushiBot
                     Console.Write("Не корректное значение");
                     continue;
                 }
-                if (UserDataRepository.GetUserDataByEmail(userEmail).UserLogin.Equals(userEmail, StringComparison.Ordinal))
+                if (UserDataRepository.GetUserDataByEmail(userEmail).Login.Equals(userEmail, StringComparison.Ordinal))
                 {
                     Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
                     Console.Write("Такой email уже существует");
@@ -575,7 +575,7 @@ namespace Project_SushiBot
             {
                 Console.SetCursorPosition(сursorPositionLogin.Left, сursorPositionLogin.Top);
                 userLogin = Console.ReadLine();
-                if (UserDataRepository.GetUserDataByLogin(userLogin).UserLogin.Equals(userLogin,StringComparison.Ordinal))
+                if (UserDataRepository.GetUserDataByLogin(userLogin).Login.Equals(userLogin,StringComparison.Ordinal))
                 {
                     Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
                     Console.Write("Такой login уже существует");
@@ -599,7 +599,7 @@ namespace Project_SushiBot
             {
                 Console.SetCursorPosition(сursorPositionLogin.Left, сursorPositionLogin.Top);
                 userLogin = Console.ReadLine();
-                if (UserDataRepository.GetUserDataByLogin(userLogin).UserLogin.Equals(userLogin, StringComparison.Ordinal))
+                if (UserDataRepository.GetUserDataByLogin(userLogin).Login.Equals(userLogin, StringComparison.Ordinal))
                 {
                     Console.SetCursorPosition(cursorPositionInfo.Left, cursorPositionInfo.Top);
                     Console.Write("Принято        ");
@@ -675,7 +675,7 @@ namespace Project_SushiBot
                 {
                     Console.Write("*");
                 }
-                if (UserDataRepository.GetUserDataByLogin(userLogin).UserPassword.Equals(userPassword, StringComparison.Ordinal)) 
+                if (UserDataRepository.GetUserDataByLogin(userLogin).Password.Equals(userPassword, StringComparison.Ordinal)) 
                 {
                     break;
                 }

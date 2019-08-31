@@ -9,19 +9,19 @@ namespace Project_SushiBot
 {
     class UserData
     {
-        internal string UserEmail { get; } = string.Empty;
-        internal string UserName { get; } = string.Empty;
-        internal string UserSurname { get; } = string.Empty;
-        internal string UserLogin { get;} = string.Empty;
-        internal string UserPassword { get; } = string.Empty;
+        internal string Email { get; } = string.Empty;
+        internal string Name { get; } = string.Empty;
+        internal string Surname { get; } = string.Empty;
+        internal string Login { get;} = string.Empty;
+        internal string Password { get; } = string.Empty;
         internal UserData() { }
-        internal UserData(string userEmail, string userName, string userSurname, string userLogin, string userPassword)
+        internal UserData(string email, string name, string surname, string login, string password)
         {
-            UserEmail = userEmail;
-            UserName = userName;
-            UserSurname = userSurname;
-            UserLogin = userLogin;
-            UserPassword = userPassword;
+            Email = email;
+            Name = name;
+            Surname = surname;
+            Login = login;
+            Password = password;
         }
         //void RegisterNewUser()
         //{
