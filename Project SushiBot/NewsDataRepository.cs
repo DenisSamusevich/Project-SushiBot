@@ -12,7 +12,7 @@ namespace Project_SushiBot
         {
             return NewsDataBase.AllNewsData;
         }
-        public static NewsData GetNewsDataById(ref int indexNews)
+        public static NewsData GetNewsDataByIndex(ref int indexNews)
         {
             return NewsDataBase.FindIndex(ref indexNews);
         }

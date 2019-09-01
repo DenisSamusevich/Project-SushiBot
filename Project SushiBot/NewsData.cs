@@ -8,9 +8,9 @@ namespace Project_SushiBot
 {
     internal struct NewsData
     {
-        string Title { get; }
-        string Text { get; }
-        string Link { get; }
+        internal string Title { get; }
+        internal string Text { get; }
+        internal string Link { get; }
         internal NewsData(string title, string text, string link)
         {
             Title = title;

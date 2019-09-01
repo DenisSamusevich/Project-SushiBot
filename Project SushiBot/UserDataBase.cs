@@ -9,14 +9,14 @@ namespace Project_SushiBot
 {
     class UserDataBase
     {
-        static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory + @"UserDataBase\UserDataBase.txt");
-        internal static UserData[] AllUserData { get; }
-        internal static int MaxNumberCollection { get; } = 50;
-        internal static int СurrentNumberCollection { get; set; } = 0;
+        static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory + @"\UserDataBase\UserDataBase.txt");
+        internal static List<UserData> AllUserData { get; set; }
+        //internal static int MaxNumberCollection { get; } = 50;
+        //internal static int СurrentNumberCollection { get; set; } = 0;
         static UserDataBase()
         {
-            СurrentNumberCollection = NumberUsersDataReadFile();
-            AllUserData = UsersDataReadFile(СurrentNumberCollection);
+            //СurrentNumberCollection = NumberUsersDataReadFile();
+            AllUserData = UsersDataReadFile(NumberUsersDataReadFile());
             //Console.WriteLine("Необходимо ввести максимальное количество элементов в колекции");
             //MaxNumberCollection = MotorcycleConsoleInput.InputConsoleNumber(MinNumberCollection, int.MaxValue);
             //Motorcycle[] MotorcyclesCreate = new Motorcycle[MaxNumberCollection];
@@ -44,7 +44,7 @@ namespace Project_SushiBot
                 {
                     break;
                 }
-                else if (lineRead.Equals("start"))
+                else if (lineRead.Equals("User"))
                 {
                     numberUsersData += 1;
                 }
@@ -52,20 +52,20 @@ namespace Project_SushiBot
             streamReader.Close();
             return numberUsersData;
         }
-        internal static UserData[] UsersDataReadFile(int numberUsersData)
+        internal static List<UserData> UsersDataReadFile(int numberUsersData)
         {
             FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
             StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
-            UserData[] returnAllUsersData = new UserData[numberUsersData];
+            List<UserData> returnAllUsersData = new List<UserData>();
             string lineRead = string.Empty;
-            for (int i = 0; i < returnAllUsersData.Length; i++)
+            for (int i = 0; i < numberUsersData; i++)
             {
                 while (true)
                 {
                     lineRead = streamReader.ReadLine();
-                    if (lineRead.Equals("start",StringComparison.Ordinal))
+                    if (lineRead.Equals("User",StringComparison.Ordinal))
                     {
-                        returnAllUsersData[i] = new UserData(streamReader.ReadLine(), streamReader.ReadLine(), streamReader.ReadLine(), streamReader.ReadLine(), streamReader.ReadLine());
+                        returnAllUsersData.Add(new UserData(streamReader.ReadLine(), streamReader.ReadLine(), streamReader.ReadLine(), streamReader.ReadLine(), streamReader.ReadLine()));
                         break;
                     }
                 }
@@ -73,10 +73,27 @@ namespace Project_SushiBot
             streamReader.Close();
             return returnAllUsersData;
         }
+        internal static void UsersDataWriteFile()
+        {
+            FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            StreamWriter streamWriter = new StreamWriter(fileStream, Encoding.Default);
+            List<UserData> returnAllUsersData = new List<UserData>();
+            for (int i = 0; i < AllUserData.Count - 1; i++)
+            {
+                streamWriter.WriteLine("User");
+                streamWriter.WriteLine(AllUserData[i].Email);
+                streamWriter.WriteLine(AllUserData[i].Name);
+                streamWriter.WriteLine(AllUserData[i].Surname);
+                streamWriter.WriteLine(AllUserData[i].Login);
+                streamWriter.WriteLine(AllUserData[i].Password);
+                streamWriter.WriteLine(string.Empty);
+            }
+            streamWriter.Close();
+        }
         internal static UserData FindLogin(string Login)
         {
             UserData UserData = new UserData();
-            for (int i = 0; i < СurrentNumberCollection; i++)
+            for (int i = 0; i < AllUserData.Count; i++)
             {
                 if (AllUserData[i].Login.Equals(Login,StringComparison.Ordinal))
                 {
@@ -89,7 +106,7 @@ namespace Project_SushiBot
         internal static UserData FindEmail(string Email)
         {
             UserData UserData = new UserData();
-            for (int i = 0; i < СurrentNumberCollection; i++)
+            for (int i = 0; i < AllUserData.Count; i++)
             {
                 if (AllUserData[i].Email.Equals(Email, StringComparison.Ordinal))
                 {
@@ -101,16 +118,8 @@ namespace Project_SushiBot
         }
         internal static void Insert(UserData UserData)
         {
-            if (СurrentNumberCollection < MaxNumberCollection)
-            {
-                AllUserData[СurrentNumberCollection] = UserData;
-                СurrentNumberCollection += 1;
-                //Запись в файл
-            }
-            else
-            {
-                Console.WriteLine("Ошибка - колекция заполнена полностью.");
-            }
+            AllUserData.Add(UserData);
+            UsersDataWriteFile();
         }
     }
 }

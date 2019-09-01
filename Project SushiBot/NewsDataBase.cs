@@ -9,7 +9,7 @@ namespace Project_SushiBot
 {
     class NewsDataBase
     {
-        static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory + @"NewsData\News.txt");
+        static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory + @"\NewsData\News.txt");
         internal static NewsData[] AllNewsData { get; }
         static NewsDataBase()
         {

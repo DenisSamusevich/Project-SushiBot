@@ -8,7 +8,7 @@ namespace Project_SushiBot
 {
     class UserDataRepository
     {
-        public static UserData[] GetUserData()
+        public static List<UserData> GetUserData()
         {
             return UserDataBase.AllUserData;
         }

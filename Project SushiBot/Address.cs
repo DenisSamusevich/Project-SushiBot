@@ -11,6 +11,12 @@ namespace Project_SushiBot
         string Street { get; }
         string House { get; }
         string Apartment { get; }
+        internal Address(string street,string house,string apartment)
+        {
+            Street = street;
+            House = house;
+            Apartment = apartment;
+        }
         public override string ToString()
         {
             string stringAddress = "Ул. " + Street + ", д. " + House + Apartment == string.Empty ? "." : (", кв. " + Apartment + ".");

@@ -9,7 +9,7 @@ namespace Project_SushiBot
 {
     class AdvertisingsBannerDataBase
     {
-        static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory+ @"AdvertisingsData\Advertisings.txt");
+        static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory+ @"\AdvertisingsData\Advertisings.txt");
         internal static string[] Banners { get; }
         static AdvertisingsBannerDataBase()
         {

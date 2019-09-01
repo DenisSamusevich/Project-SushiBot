@@ -23,49 +23,5 @@ namespace Project_SushiBot
             Login = login;
             Password = password;
         }
-        //void RegisterNewUser()
-        //{
-        //    Console.Clear();
-        //    Console.WriteLine("Вас приветствует окно регистрации нового пользователя");
-        //    Console.Write("Введите свою фамилию: ");
-        //    string userSurname = Console.ReadLine();
-        //    Console.Write("Введите свое имя: ");
-        //    string userName = Console.ReadLine();
-        //    Console.Write("Введите свою фамилию: ");
-
-        //}
-        //string ValidationInputEmail()
-        //{
-        //    string userEmail = string.Empty;
-        //    //Console.WriteLine("Введите ваш email");
-        //    //if (Regex.Match)
-        //    return userEmail;
-        //}
-        //string ValidationInputPhone()
-        //{
-        //    string userPhone = string.Empty;
-        //    //Console.WriteLine("Введите ваш email");
-        //    //if (Regex.Match)
-        //    return userPhone;
-        //}
-        //string ValidationInputLogin()
-        //{
-        //    string userPhone = string.Empty;
-        //    //Console.WriteLine("Введите ваш email");
-        //    //if (Regex.Match)
-        //    return userPhone;
-        //}
-        //string ValidationInputPassword()
-        //{
-        //    string Password = string.Empty;
-        //    //Console.WriteLine("Введите ваш email");
-        //    //if (Regex.Match)
-        //    return Password;
-        //}
-        //void UserChangePhone()
-        //{
-
-        //}
-
     }
 }
