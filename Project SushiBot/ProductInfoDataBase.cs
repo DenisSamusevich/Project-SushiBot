@@ -7,14 +7,15 @@ using System.IO;
 
 namespace Project_SushiBot
 {
-    class ProductDataBase
+    class ProductInfoDataBase
     {
         static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory + @"ProductData\Product.txt");
-        internal static ProductData[][] AllProductData { get; }
+        internal static ProductInfoData[][] AllProductInfoData { get; }
         internal static string[] MenuData { get; }
-        static ProductDataBase()
+        static ProductInfoDataBase()
         {
-            AllProductData = ProductReadFile(NumberMenuProductReadFile(NumberMenuReadFile()),out string[] returnMenuData);
+            AllProductInfoData = ProductReadFile(NumberMenuProductReadFile(NumberMenuReadFile()),out string[] returnMenuData);
+            MenuData = returnMenuData;
         }
         internal static int NumberMenuReadFile()
         {
@@ -73,18 +74,18 @@ namespace Project_SushiBot
             streamReader.Close();
             return returnNumberMenuProduct;
         }
-        internal static ProductData[][] ProductReadFile(int[] numberMenuProduct, out string[] returnMenuData)
+        internal static ProductInfoData[][] ProductReadFile(int[] numberMenuProduct, out string[] returnMenuData)
         {
             FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
             StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
-            ProductData[][] allProductData = new ProductData[numberMenuProduct.Length][];
-            for (int i = 0; i < allProductData.Length; i++)
+            ProductInfoData[][] AllProductInfoData = new ProductInfoData[numberMenuProduct.Length][];
+            for (int i = 0; i < AllProductInfoData.Length; i++)
             {
-                allProductData[i] = new ProductData[numberMenuProduct[i]];
+                AllProductInfoData[i] = new ProductInfoData[numberMenuProduct[i]];
             }
             returnMenuData = new string[numberMenuProduct.Length];
             string lineRead = string.Empty;
-            for (int i = 0; i < allProductData.Length; i++)
+            for (int i = 0; i < AllProductInfoData.Length; i++)
             {
                 while (true)
                 {
@@ -93,7 +94,7 @@ namespace Project_SushiBot
                     {
                         returnMenuData[i] = streamReader.ReadLine();
                         
-                        for (int j = 0; j < allProductData[i].Length; j++)
+                        for (int j = 0; j < AllProductInfoData[i].Length; j++)
                         {
                             while (true)
                             {
@@ -105,7 +106,7 @@ namespace Project_SushiBot
                                     {
                                         productData[n] = streamReader.ReadLine();
                                     }
-                                    allProductData[i][j] = new ProductData(productData[0], productData[1], productData[2]);
+                                    AllProductInfoData[i][j] = new ProductInfoData(productData[0], productData[1], productData[2]);
                                     break;
                                 }
                             }
@@ -114,28 +115,28 @@ namespace Project_SushiBot
                 }
             }
             streamReader.Close();
-            return allProductData;
+            return AllProductInfoData;
         }
 
-        internal static ProductData FindIndex(ref int indexMenu, ref int indexProduct)
+        internal static ProductInfoData FindIndex(ref int indexMenu, ref int indexProduct)
         {
-            if (indexMenu > AllProductData.Length - 1)
+            if (indexMenu > AllProductInfoData.Length - 1)
             {
-                indexMenu = AllProductData.Length - 1;
+                indexMenu = AllProductInfoData.Length - 1;
             }
             else if (indexMenu < 0)
             {
                 indexMenu = 0;
             }
-            if (indexProduct > AllProductData[indexMenu].Length - 1)
+            if (indexProduct > AllProductInfoData[indexMenu].Length - 1)
             {
-                indexProduct = AllProductData[indexMenu].Length - 1;
+                indexProduct = AllProductInfoData[indexMenu].Length - 1;
             }
             else if (indexProduct < 0)
             {
                 indexProduct = 0;
             }
-            return AllProductData[indexMenu][indexProduct];
+            return AllProductInfoData[indexMenu][indexProduct];
         }
     }
 }

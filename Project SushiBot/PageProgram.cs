@@ -275,7 +275,7 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageStatusOrder(string advertising, UserData userData, OrderData orderInfo)
+        internal static void PageStatusOrder(string advertising, UserData userData, ProductOrderData orderInfo)
         {
             PageClear();
             Console.WriteLine(advertising);
@@ -327,7 +327,7 @@ namespace Project_SushiBot
                     }
             }
         }
-        internal static void PageOrderSushi(string advertising, UserData userData, int indexMenuNow, ProductData product, int Amount, out СursorPosition сursorPositionInputAmount)
+        internal static void PageOrderSushi(string advertising, UserData userData, int indexMenuNow, ProductInfoData product, int Amount, out СursorPosition сursorPositionInputAmount)
         {
             PageClear();
             Console.WriteLine(advertising);
@@ -402,7 +402,7 @@ namespace Project_SushiBot
             }
 
         }
-        internal static void PageRegistrationOrder(string advertising, UserData userData, OrderData orderInfo)
+        internal static void PageRegistrationOrder(string advertising, UserData userData, ProductOrderData orderInfo)
         {
             PageClear();
             Console.WriteLine(advertising);

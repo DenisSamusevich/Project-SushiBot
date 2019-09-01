@@ -3,17 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Project_SushiBot
 {
-    class OrderData
+    class ProductOrderData
     {
-        DateTime DateOrder { get; }
-        int NumberOrder { get; }
-        ProductDataOrder[] Product { get; }
+        internal string Login { get; }
+        DateTime DateOrder { get; set; }
+        int NumberOrder { get; set; }
+        ProductData[] Product { get; }
         double TotalPrice { get; }
         EnumStatusOrder EnumStatusOrder { get; }
-        Address Address { get; set; } 
+        Address Address { get; set; }
         int Phone { get; set; } 
         internal void OrderDataWrite(bool fullInfo)
         {
@@ -78,16 +80,14 @@ namespace Project_SushiBot
             }
             return statusOrder;
         }
-    }
-    struct Address
-    {
-        string Street { get; }
-        string House { get; }
-        string Apartment { get; }
-        public override string ToString()
+        ProductOrderData(string login, ProductData[] productData)
         {
-            string stringAddress = "Ул. " + Street + ", д. " + House + Apartment == string.Empty ? "." : (", кв. " + Apartment + ".");
-            return stringAddress;
+            Login = login;
+            Product = productData;
+            for (int i = 0; i < productData.Length; i++)
+            {
+                TotalPrice += productData[i].Price * productData[i].Amount;
+            }
         }
     }
 }
