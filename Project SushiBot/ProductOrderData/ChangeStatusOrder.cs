@@ -18,14 +18,15 @@ namespace Project_SushiBot
         {
             MailSender mailSender = new MailSender(UserDataRepository.GetUserDataByLogin(productOrderData.GetLoginOrder()).Email);
             mailSender.MailSendOrderMaking(productOrderData);
-            Thread.Sleep(TimeSpan.FromMinutes(1));
+            Thread.Sleep(TimeSpan.FromMinutes(5));
             ProductOrderDataBaseRepository.UpdateStatusOrderData(productOrderData);
             ProductOrderDataBaseRepository.SaveAllProductOrderData();
             mailSender.MailSendOrderDelivery(productOrderData);
-            Thread.Sleep(TimeSpan.FromMinutes(1));
+            Thread.Sleep(TimeSpan.FromMinutes(5));
             ProductOrderDataBaseRepository.UpdateStatusOrderData(productOrderData);
             ProductOrderDataBaseRepository.SaveAllProductOrderData();
             mailSender.MailSendOrderСompleted(productOrderData);
+            productOrderData.Dispose();
         }
     }
 }

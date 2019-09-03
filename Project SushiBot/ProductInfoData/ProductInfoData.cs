@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Project_SushiBot
 {
-    class ProductInfoData
+    class ProductInfoData : IDisposable
     {
+        private static readonly Logger logger = new Logger();
         public string Name { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
@@ -43,14 +45,40 @@ namespace Project_SushiBot
         }
         internal static double PriceTextConversion(string PriceText)
         {
-            if (Double.TryParse(PriceText,out double Price))
+            try
             {
-                return Price;
+                if (double.TryParse(PriceText, out double Price))
+                {
+                    return Price;
+                }
+                else
+                {
+                    throw new ConvertExeption();
+                }
             }
-            else
+            catch
             {
+                logger.Error("Price product not conversion", Thread.CurrentThread);
                 return 0;
             }
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Name = null;
+                Description = null;
+                Price = 0;
+            }
+        }
+        ~ProductInfoData()
+        {
+            Dispose(false);
         }
     }
 }

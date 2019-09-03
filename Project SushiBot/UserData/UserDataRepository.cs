@@ -10,25 +10,28 @@ namespace Project_SushiBot
     class UserDataRepository
     {
         private static readonly Logger logger = new Logger();
-        public static List<UserData> GetUserData()
-        {
-            logger.Info("Data base request", Thread.CurrentThread);
-            return UserDataBase.AllUserData;
-        }
         public static UserData GetUserDataByLogin(string login)
         {
             logger.Info("Lodin request in base", Thread.CurrentThread);
-            return UserDataBase.FindLogin(login);
+            UserDataBase userDataBase = new UserDataBase();
+            UserData userData = userDataBase.FindLogin(login);
+            userDataBase.Dispose();
+            return userData;
         }
         public static UserData GetUserDataByEmail(string email)
         {
             logger.Info("Email request in base", Thread.CurrentThread);
-            return UserDataBase.FindEmail(email);
+            UserDataBase userDataBase = new UserDataBase();
+            UserData userData = userDataBase.FindEmail(email);
+            userDataBase.Dispose();
+            return userData;
         }
         public static void CreateUserData(UserData usersData)
         {
             logger.Info("Writing user data in base", Thread.CurrentThread);
-            UserDataBase.Insert(usersData);
+            UserDataBase userDataBase = new UserDataBase();
+            userDataBase.Insert(usersData);
+            userDataBase.Dispose();
         }
     }
 }

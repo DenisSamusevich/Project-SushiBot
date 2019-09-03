@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project_SushiBot
 {
-    class ProductData : ProductInfoData
+    class ProductData : ProductInfoData, IDisposable
     {
         public int Amount { get; set; }
         internal ProductData() { }
@@ -28,6 +28,25 @@ namespace Project_SushiBot
         internal double ProductTotalPrice()
         {
             return (Price * Amount);
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Amount = 0;
+                Name = null;
+                Description = null;
+                Price = 0;
+            }
+        }
+        ~ProductData()
+        {
+            Dispose(false);
         }
     }
 }

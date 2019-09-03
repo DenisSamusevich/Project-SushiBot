@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 
 namespace Project_SushiBot
 {
-    class ProductOrderData
+    class ProductOrderData : IDisposable
     {
+        private static readonly Logger logger = new Logger();
         public string Login { get; set; }
         public DateTime DateOrder { get; set; }
-        public  string NumberOrder { get; set; }
+        public string NumberOrder { get; set; }
         public List<ProductData> Product { get; set; }
         public double TotalPrice { get; set; }
         public EnumStatusOrder EnumStatusOrder { get; set; }
-        public Address Address { get; set; }
+        public Address<string,string,string> Address { get; set; }
         public string Phone { get; set; }
         internal ProductOrderData() { }
         internal ProductOrderData(string login, List<ProductData> productData)
@@ -29,11 +31,27 @@ namespace Project_SushiBot
         }
         internal string GetLoginOrder()
         {
-            return Login;
+            if (Login==null)
+            {
+                logger.Error("Login not found in order", Thread.CurrentThread);
+                return null;
+            }
+            else
+            {
+                return Login;
+            }
         }
         internal string GetNumberOrder()
         {
-            return NumberOrder;
+            if (NumberOrder == null)
+            {
+                logger.Error("Number order not found in order", Thread.CurrentThread);
+                return null;
+            }
+            else
+            {
+                return NumberOrder;
+            }
         }
         internal EnumStatusOrder GetEnumStatusOrder()
         {
@@ -44,7 +62,7 @@ namespace Project_SushiBot
             DateOrder = DateTime.Now;
             NumberOrder =DateOrder.Month.ToString("D2") + DateOrder.Day.ToString("D2") + DateOrder.Hour.ToString("D2") + DateOrder.Minute.ToString("D2") + DateOrder.Second.ToString("D2");
             EnumStatusOrder = EnumStatusOrder.OrderMaking;
-            Address = new Address(orderStreet, orderHouse, orderApartment);
+            Address = new Address<string, string, string>(orderStreet, orderHouse, orderApartment);
             Phone = orderPhone;
         }
         internal void OrderDataWrite()
@@ -107,6 +125,29 @@ namespace Project_SushiBot
         internal void ChangeOrderDeliveryToOrderСompleted()
         {
             EnumStatusOrder = EnumStatusOrder.OrderСompleted;
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Login = null;
+                DateOrder = DateTime.MinValue;
+                NumberOrder = null;
+                Product = null;
+                TotalPrice = 0;
+                EnumStatusOrder = 0;
+                Address = null;
+                Phone = null;
+            }
+        }
+        ~ProductOrderData()
+        {
+            Dispose(false);
         }
     }
 }

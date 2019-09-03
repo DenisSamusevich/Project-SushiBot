@@ -9,10 +9,10 @@ using System.Threading;
 
 namespace Project_SushiBot
 {
-    class ProductOrderDataBase
+    class ProductOrderDataBase : IDisposable 
     {
         private static readonly Logger logger = new Logger();
-        internal static List<ProductOrderData> AllProductOrderData { get; }
+        internal static List<ProductOrderData> AllProductOrderData { get; set; }
         internal static List<ProductOrderData> AllProductOrderUserData { get; set; }
         static ProductOrderDataBase()
         {
@@ -25,13 +25,11 @@ namespace Project_SushiBot
             {
                 AllProductOrderData = productOrderReadFile;
             }
-
         }
         internal static void AllProductOrderUserDataSet(string userLogin)
         {
             AllProductOrderUserData = FindLogin(userLogin);
         }
-
         internal static List<ProductOrderData> ProductOrderReadFile()
         {
             logger.Debag("Database order read from file", Thread.CurrentThread);
@@ -102,6 +100,23 @@ namespace Project_SushiBot
             {
                 productOrderUserData.ChangeOrderDeliveryToOrderСompleted();
             }
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                AllProductOrderData = null;
+                AllProductOrderUserData = null;
+            }
+        }
+        ~ProductOrderDataBase()
+        {
+            Dispose(false);
         }
     }
 }

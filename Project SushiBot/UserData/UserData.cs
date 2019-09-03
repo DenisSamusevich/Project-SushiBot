@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Project_SushiBot
 {
-    class UserData
+    class UserData : IDisposable;
     {
-        internal string Email { get; } = string.Empty;
-        internal string Name { get; } = string.Empty;
-        internal string Surname { get; } = string.Empty;
-        internal string Login { get;} = string.Empty;
-        internal string Password { get; } = string.Empty;
+        internal string Email { get;set; } = string.Empty;
+        internal string Name { get; set; } = string.Empty;
+        internal string Surname { get; set; } = string.Empty;
+        internal string Login { get; set; } = string.Empty;
+        internal string Password { get; set; } = string.Empty;
         internal UserData() { }
         internal UserData(string email, string name, string surname, string login, string password)
         {
@@ -22,6 +22,26 @@ namespace Project_SushiBot
             Surname = surname;
             Login = login;
             Password = password;
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                Email = null;
+                Name = null;
+                Surname = null;
+                Login = null;
+                Password = null;
+            }
+        }
+        ~UserData()
+        {
+            Dispose(false);
         }
     }
 }

@@ -32,6 +32,7 @@ namespace Project_SushiBot
             MailMessageFromTo.Body = string.Format("Спасибо!\nЗдравствуйте! Благодорим вас за заказ №{0}.\nВ настоящее время ваш заказ находится на стадии комплектования продуктов, это может занять некоторое время. Мы обязательно сообщим вам когда наш курьер отправится к вам", productOrderData.GetNumberOrder());
             MailMessageFromTo.IsBodyHtml = false;
             SmtpClient.Send(MailMessageFromTo);
+            productOrderData.Dispose();
         }
         internal void MailSendOrderDelivery(ProductOrderData productOrderData)
         {
@@ -39,6 +40,7 @@ namespace Project_SushiBot
             MailMessageFromTo.Subject = "Заказ скомплектован";
             MailMessageFromTo.Body = string.Format("Здравствуйте! Ваш заказ готов.\nВ ближайшее время курьер доставит на ваш адрес.", productOrderData.GetNumberOrder());
             SmtpClient.Send(MailMessageFromTo);
+            productOrderData.Dispose();
         }
         internal void MailSendOrderСompleted(ProductOrderData productOrderData)
         {
@@ -46,6 +48,7 @@ namespace Project_SushiBot
             MailMessageFromTo.Subject = "Заказ доставлен";
             MailMessageFromTo.Body = string.Format("Здравствуйте! Ваш заказ доставлен.\nСпасибо за то что пользуетесь нашими услугами.", productOrderData.GetNumberOrder());
             SmtpClient.Send(MailMessageFromTo);
+            productOrderData.Dispose();
         }
     }
 }

@@ -8,13 +8,12 @@ namespace Project_SushiBot
 {
     class NewsDataRepository
     {
-        public static NewsData[] GetNewsData()
-        {
-            return NewsDataBase.GetAllNewsData();
-        }
         public static NewsData GetNewsDataByIndex(ref int indexNews)
         {
-            return NewsDataBase.FindIndex(ref indexNews);
+            NewsDataBase newsDataBase = new NewsDataBase();
+            NewsData newsData = newsDataBase.FindIndex(ref indexNews);
+            newsDataBase.Dispose();
+            return newsData;
         }
     }
 }

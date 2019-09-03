@@ -8,20 +8,16 @@ using System.Threading.Tasks;
 
 namespace Project_SushiBot
 {
-    class NewsDataBase
+    class NewsDataBase : IDisposable
     {
         private static readonly Logger logger = new Logger();
-        static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory + @"\NewsData\News.txt");
-        static NewsData[] AllNewsData { get; }
-        static NewsDataBase()
+        FileInfo File { get; set; } = new FileInfo(Environment.CurrentDirectory + @"\NewsData\News.txt");
+        static NewsData[] AllNewsData { get; set; }
+        internal NewsDataBase()
         {
             AllNewsData = NewsReadFile(NumberNewsReadFile());
         }
-        internal static NewsData[] GetAllNewsData()
-        {
-            return AllNewsData;
-        }
-        internal static int NumberNewsReadFile()
+        internal int NumberNewsReadFile()
         {
             string lineRead = string.Empty;
             int numberNews = 0;
@@ -42,52 +38,91 @@ namespace Project_SushiBot
             streamReader.Close();
             return numberNews;
         }
-        internal static NewsData[] NewsReadFile(int numberNews)
+        internal NewsData[] NewsReadFile(int numberNews)
         {
-            if (numberNews <= 0)
+            try
+            {
+                if (numberNews <= 0)
+                {
+                    throw new ArrayNotFoundExeption("Ошибка чтения данных");
+                }
+                else
+                {
+                    logger.Debag("Start news database read", Thread.CurrentThread);
+                    FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                    StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
+                    NewsData[] returnAllNewsData = new NewsData[numberNews];
+                    string lineRead = string.Empty;
+                    for (int i = 0; i < returnAllNewsData.Length; i++)
+                    {
+                        string[] stringNews = new string[3];
+                        while (true)
+                        {
+                            lineRead = streamReader.ReadLine();
+                            if (lineRead.Equals("News"))
+                            {
+                                for (int j = 0; j < stringNews.Length; j++)
+                                {
+                                    stringNews[j] = streamReader.ReadLine();
+                                }
+                                returnAllNewsData[i] = new NewsData(stringNews[0], stringNews[1], stringNews[2]);
+                                break;
+                            }
+                        }
+                    }
+                    streamReader.Close();
+                    return returnAllNewsData;
+                }
+            }
+            catch
             {
                 logger.Error("News not found", Thread.CurrentThread);
                 return null;
             }
-            else
+        }
+        internal NewsData FindIndex(ref int index)
+        {
+            try
             {
-                logger.Debag("Start news database read", Thread.CurrentThread);
-                FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
-                StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
-                NewsData[] returnAllNewsData = new NewsData[numberNews];
-                string lineRead = string.Empty;
-                for (int i = 0; i < returnAllNewsData.Length; i++)
+                if (AllNewsData == null)
                 {
-                    string[] stringNews = new string[3];
-                    while (true)
-                    {
-                        lineRead = streamReader.ReadLine();
-                        if (lineRead.Equals("News"))
-                        {
-                            for (int j = 0; j < stringNews.Length; j++)
-                            {
-                                stringNews[j] = streamReader.ReadLine();
-                            }
-                            returnAllNewsData[i] = new NewsData(stringNews[0], stringNews[1], stringNews[2]);
-                            break;
-                        }
-                    }
+                    throw new ArrayNotFoundExeption("Ошибка чтения данных");
                 }
-                streamReader.Close();
-                return returnAllNewsData;
+                else
+                {
+                    if (index > AllNewsData.Length - 1)
+                    {
+                        index = AllNewsData.Length - 1;
+                    }
+                    else if (index < 0)
+                    {
+                        index = 0;
+                    }
+                    return AllNewsData[index];
+                }
+            }
+            catch
+            {
+                logger.Error("News database not found", Thread.CurrentThread);
+                return null;
             }
         }
-        internal static NewsData FindIndex(ref int index)
+        public void Dispose()
         {
-            if (index> AllNewsData.Length-1)
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                index = AllNewsData.Length - 1;
+                File = null;
+                AllNewsData = null;
             }
-            else if (index<0)
-            {
-                index = 0;
-            }
-            return AllNewsData[index];
+        }
+        ~NewsDataBase()
+        {
+            Dispose(false);
         }
     }
 }

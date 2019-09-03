@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace Project_SushiBot
 {
-    class UserDataBase
+    class UserDataBase : IDisposable
     {
         private static readonly Logger logger = new Logger();
-        static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory + @"\UserDataBase\UserDataBase.txt");
+        static FileInfo File { get; set; } = new FileInfo(Environment.CurrentDirectory + @"\UserDataBase\UserDataBase.txt");
         internal static List<UserData> AllUserData { get; set; }
-        static UserDataBase()
+        internal UserDataBase()
         {
             AllUserData = UsersDataReadFile(NumberUsersDataReadFile());
         }
@@ -40,25 +40,33 @@ namespace Project_SushiBot
         }
         internal static List<UserData> UsersDataReadFile(int numberUsersData)
         {
-            FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
-            logger.Debag("Start database read", Thread.CurrentThread);
-            List<UserData> returnAllUsersData = new List<UserData>();
-            string lineRead = string.Empty;
-            for (int i = 0; i < numberUsersData; i++)
+            if (numberUsersData == 0)
             {
-                while (true)
+                logger.Error("User not found in database", Thread.CurrentThread);
+                return null;
+            }
+            else
+            {
+                FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
+                logger.Debag("Start database read", Thread.CurrentThread);
+                List<UserData> returnAllUsersData = new List<UserData>();
+                string lineRead = string.Empty;
+                for (int i = 0; i < numberUsersData; i++)
                 {
-                    lineRead = streamReader.ReadLine();
-                    if (lineRead.Equals("User",StringComparison.Ordinal))
+                    while (true)
                     {
-                        returnAllUsersData.Add(new UserData(streamReader.ReadLine(), streamReader.ReadLine(), streamReader.ReadLine(), streamReader.ReadLine(), streamReader.ReadLine()));
-                        break;
+                        lineRead = streamReader.ReadLine();
+                        if (lineRead.Equals("User", StringComparison.Ordinal))
+                        {
+                            returnAllUsersData.Add(new UserData(streamReader.ReadLine(), streamReader.ReadLine(), streamReader.ReadLine(), streamReader.ReadLine(), streamReader.ReadLine()));
+                            break;
+                        }
                     }
                 }
+                streamReader.Close();
+                return returnAllUsersData;
             }
-            streamReader.Close();
-            return returnAllUsersData;
         }
         internal static void UsersDataWriteFile()
         {
@@ -77,7 +85,7 @@ namespace Project_SushiBot
             }
             streamWriter.Close();
         }
-        internal static UserData FindLogin(string Login)
+        internal UserData FindLogin(string Login)
         {
             UserData UserData = new UserData();
             for (int i = 0; i < AllUserData.Count; i++)
@@ -90,7 +98,7 @@ namespace Project_SushiBot
             }
             return UserData;
         }
-        internal static UserData FindEmail(string Email)
+        internal UserData FindEmail(string Email)
         {
             UserData UserData = new UserData();
             for (int i = 0; i < AllUserData.Count; i++)
@@ -103,11 +111,28 @@ namespace Project_SushiBot
             }
             return UserData;
         }
-        internal static void Insert(UserData UserData)
+        internal void Insert(UserData UserData)
         {
             logger.Debag("User added  in database", Thread.CurrentThread);
             AllUserData.Add(UserData);
             UsersDataWriteFile();
+        }
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                File = null;
+                AllUserData = null;
+            }
+        }
+        ~UserDataBase()
+        {
+            Dispose(false);
         }
     }
 }

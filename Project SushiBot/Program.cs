@@ -11,6 +11,7 @@ namespace Project_SushiBot
         static void Main(string[] args)
         {
             string userLogin = string.Empty;
+            AdvertisingsBannerDataBase advertisingsBannerDataBase = new AdvertisingsBannerDataBase();
             ProductOrderData productOrderData = new ProductOrderData();
             EnumPage enumPage = EnumPage.PageGreeting;
             logger.Info("Start program", Thread.CurrentThread);
@@ -20,7 +21,7 @@ namespace Project_SushiBot
                 case EnumPage.PageGreeting:
                     {
                         logger.Info("Page greeting", Thread.CurrentThread);
-                        PageProgram.PageGreeting(AdvertisingsBannerDataBase.RandomBanner());
+                        PageProgram.PageGreeting(advertisingsBannerDataBase.RandomBanner());
                         startPageGreeting:
                         enumPage = PageProgram.PageGreetingBottom();
                         switch (enumPage)
@@ -28,6 +29,8 @@ namespace Project_SushiBot
                             case EnumPage.Exit:
                                 {
                                     logger.Info("Exit program", Thread.CurrentThread);
+                                    new ProductOrderDataBase().Dispose();
+                                    advertisingsBannerDataBase.Dispose();
                                     Environment.Exit(0);
                                     break;
                                 }
@@ -209,7 +212,7 @@ namespace Project_SushiBot
                         int indexProduct = 0;
                         List<ProductData> userProductOrderData = new List<ProductData>();
                         startPageOrderSushiIndexNew:
-                        PageProgram.PageOrderSushi(AdvertisingsBannerDataBase.RandomBanner(), UserDataRepository.GetUserDataByLogin(userLogin), ProductInfoDataBase.GetAllMenuData(), ref indexMenu, ProductInfoDataRepository.GetProductDataByindex(ref indexMenu, ref indexProduct), out СursorPosition сursorPositionInputAmount); ;
+                        PageProgram.PageOrderSushi(AdvertisingsBannerDataBase.RandomBanner(), UserDataRepository.GetUserDataByLogin(userLogin), ProductInfoDataRepository.GetMenuData(), ref indexMenu, ProductInfoDataRepository.GetProductDataByindex(ref indexMenu, ref indexProduct), out СursorPosition сursorPositionInputAmount); ;
                         startPageOrderSushi:
                         enumPage = PageProgram.PageOrderSushiBottom();
                         switch (enumPage)
@@ -308,6 +311,7 @@ namespace Project_SushiBot
                                     ProductOrderDataBaseRepository.SaveAllProductOrderData();
                                     PageProgram.PageInfo(AdvertisingsBannerDataBase.RandomBanner(), "Заказ внесен в базу");
                                     ChangeStatusOrder.StartChangeOrder(productOrderData);
+                                    productOrderData.Dispose();
                                     enumPage = EnumPage.PageProfile;
                                     break;
                                 }

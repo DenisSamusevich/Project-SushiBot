@@ -151,6 +151,8 @@ namespace Project_SushiBot
             Console.WriteLine(advertising);
             Console.WriteLine("Добрый день {0} {1}\n", userData.Name, userData.Surname);
             newsData.WriteNews();
+            newsData.Dispose();
+            userData.Dispose();
         }
         internal static EnumPage PageNewsBottom()
         {
@@ -194,6 +196,7 @@ namespace Project_SushiBot
             Console.WriteLine("Специалисты в области диетологии считают суши хорошо сбалансированной, здоровой\nпищей, так как в них содержится много питательных веществ, в том числе минералы\nи витамины, которые, как правило, частично теряются в процессе кулинарной\nобработки.");
             Console.WriteLine("Рыба и морепродукты малокалорийны: калорий в них меньше, чем даже в самом нежи-\nрном курином и любом другом мясе.Они обеспечивают организм высококачественными \nбелками и минералами - йод, цинк, калий, фосфор.Рыба и морепродукты также бога-\nты витаминами группы В. Жирные кислоты омега - 3, входящие в состав рыбьего жи-\nра очень полезны для сердечно - сосудистой системы.Они предотвращают образо-\nвание тромбов, сужение просвета артерий и снижают риск сердечных приступов.\n");
             Console.WriteLine("Сдесь вы можете узнать о наших актуальных акциях, заказать суши с доставкой,  \nпроверить статус своих заказов, просмотреть новости.\n");
+            userData.Dispose();
         }
         internal static EnumPage PageProfileBottom()
         {
@@ -243,7 +246,8 @@ namespace Project_SushiBot
             {
                 orderInfo.OrderDataWrite();
             }
-
+            userData.Dispose();
+            orderInfo.Dispose();
         }
         internal static EnumPage PageStatusOrderBottom()
         {
@@ -306,6 +310,8 @@ namespace Project_SushiBot
             Console.Write("Укажите количество: ");
             сursorPositionInputAmount = new СursorPosition(Console.CursorLeft, Console.CursorTop);
             Console.Write(0.ToString());
+            userData.Dispose();
+            product.Dispose();
         }
         internal static EnumPage PageOrderSushiBottom()
         {
@@ -365,6 +371,8 @@ namespace Project_SushiBot
             Console.WriteLine("Добрый день {0} {1}\n", userData.Name, userData.Surname);
             Console.WriteLine("Тут вы можете подтвердить список заказаных суши и оформить доставку\n");
             orderInfo.OrderDataPriceWrite();
+            userData.Dispose();
+            orderInfo.Dispose();
         }
         internal static EnumPage PageRegistrationOrderBottom()
         {
@@ -406,6 +414,7 @@ namespace Project_SushiBot
             Console.WriteLine("\n");
             Console.Write("Телефон: +375");
             сursorPositionInputPhone = new СursorPosition(Console.CursorLeft, Console.CursorTop);
+            userData.Dispose();
         }
         internal static EnumPage PageOrderEndBottom()
         {

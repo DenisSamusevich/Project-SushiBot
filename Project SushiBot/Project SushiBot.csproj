@@ -61,12 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Address.cs" />
+    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="MyExeption\MyExeption.cs" />
     <Compile Include="ProductOrderData\ChangeStatusOrder.cs" />
     <Compile Include="Logger\ILogger.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="MailSender.cs" />
     <Compile Include="PageProgram\PageInput.cs" />
-    <Compile Include="Struct\Address.cs" />
     <Compile Include="AdvertisingsBannerData\AdvertisingsBannerDataBase.cs" />
     <Compile Include="Enum\EnumInput.cs" />
     <Compile Include="News\NewsData.cs" />
@@ -104,5 +106,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

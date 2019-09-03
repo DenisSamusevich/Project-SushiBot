@@ -8,10 +8,6 @@ namespace Project_SushiBot
 {
     class ProductOrderDataBaseRepository
     {
-        public static List<ProductOrderData> AllProductOrderData()
-        {
-            return ProductOrderDataBase.AllProductOrderData;
-        }
         public static List<ProductOrderData> AllProductOrderUserData(string userLogin)
         {
             return ProductOrderDataBase.FindLogin(userLogin);
