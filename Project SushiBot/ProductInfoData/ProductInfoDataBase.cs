@@ -9,9 +9,10 @@ namespace Project_SushiBot
 {
     class ProductInfoDataBase
     {
-        static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory + @"ProductData\Product.txt");
-        internal static ProductInfoData[][] AllProductInfoData { get; }
-        internal static string[] MenuData { get; }
+        private static readonly Logger logger = new Logger();
+        static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory + @"\ProductData\Product.txt");
+        static ProductInfoData[][] AllProductInfoData { get; }
+        static string[] MenuData { get; }
         static ProductInfoDataBase()
         {
             AllProductInfoData = ProductReadFile(NumberMenuProductReadFile(NumberMenuReadFile()),out string[] returnMenuData);
@@ -40,6 +41,7 @@ namespace Project_SushiBot
         }
         internal static int[] NumberMenuProductReadFile(int numberMenu)
         {
+
             string lineRead = string.Empty;
             int[] returnNumberMenuProduct = new int[numberMenu];
             FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
@@ -111,13 +113,13 @@ namespace Project_SushiBot
                                 }
                             }
                         }
+                        break;
                     }
                 }
             }
             streamReader.Close();
             return AllProductInfoData;
         }
-
         internal static ProductInfoData FindIndex(ref int indexMenu, ref int indexProduct)
         {
             if (indexMenu > AllProductInfoData.Length - 1)
@@ -137,6 +139,10 @@ namespace Project_SushiBot
                 indexProduct = 0;
             }
             return AllProductInfoData[indexMenu][indexProduct];
+        }
+        internal static string[] GetAllMenuData()
+        {
+            return MenuData;
         }
     }
 }

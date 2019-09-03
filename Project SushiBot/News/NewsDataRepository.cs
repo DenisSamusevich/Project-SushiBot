@@ -10,7 +10,7 @@ namespace Project_SushiBot
     {
         public static NewsData[] GetNewsData()
         {
-            return NewsDataBase.AllNewsData;
+            return NewsDataBase.GetAllNewsData();
         }
         public static NewsData GetNewsDataByIndex(ref int indexNews)
         {

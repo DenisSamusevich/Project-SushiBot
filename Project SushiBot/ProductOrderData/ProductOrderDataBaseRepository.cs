@@ -33,5 +33,10 @@ namespace Project_SushiBot
         {
             ProductOrderDataBase.ProductOrderWriteFile();
         }
+        public static void UpdateStatusOrderData(ProductOrderData productOrderUserData)
+        {
+            ProductOrderDataBase.UpdateStatusOrder(productOrderUserData);
+            ProductOrderDataBase.Update(productOrderUserData);
+        }
     }
 }

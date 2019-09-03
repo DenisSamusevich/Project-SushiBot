@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Project_SushiBot
 {
     class NewsDataBase
     {
+        private static readonly Logger logger = new Logger();
         static FileInfo File { get; } = new FileInfo(Environment.CurrentDirectory + @"\NewsData\News.txt");
-        internal static NewsData[] AllNewsData { get; }
+        static NewsData[] AllNewsData { get; }
         static NewsDataBase()
         {
             AllNewsData = NewsReadFile(NumberNewsReadFile());
+        }
+        internal static NewsData[] GetAllNewsData()
+        {
+            return AllNewsData;
         }
         internal static int NumberNewsReadFile()
         {
@@ -38,29 +44,38 @@ namespace Project_SushiBot
         }
         internal static NewsData[] NewsReadFile(int numberNews)
         {
-            FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
-            NewsData[] returnAllNewsData = new NewsData[numberNews];
-            string lineRead = string.Empty;
-            for (int i = 0; i < returnAllNewsData.Length; i++)
+            if (numberNews <= 0)
             {
-                string[] stringNews = new string[3];
-                while (true)
+                logger.Error("News not found", Thread.CurrentThread);
+                return null;
+            }
+            else
+            {
+                logger.Debag("Start news database read", Thread.CurrentThread);
+                FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
+                NewsData[] returnAllNewsData = new NewsData[numberNews];
+                string lineRead = string.Empty;
+                for (int i = 0; i < returnAllNewsData.Length; i++)
                 {
-                    lineRead = streamReader.ReadLine();
-                    if (lineRead.Equals("News"))
+                    string[] stringNews = new string[3];
+                    while (true)
                     {
-                        for (int j = 0; j < stringNews.Length; j++)
+                        lineRead = streamReader.ReadLine();
+                        if (lineRead.Equals("News"))
                         {
-                            stringNews[j] = streamReader.ReadLine();
+                            for (int j = 0; j < stringNews.Length; j++)
+                            {
+                                stringNews[j] = streamReader.ReadLine();
+                            }
+                            returnAllNewsData[i] = new NewsData(stringNews[0], stringNews[1], stringNews[2]);
+                            break;
                         }
-                        returnAllNewsData[i] = new NewsData(stringNews[0], stringNews[1], stringNews[2]);
-                        break;
                     }
                 }
+                streamReader.Close();
+                return returnAllNewsData;
             }
-            streamReader.Close();
-            return returnAllNewsData;
         }
         internal static NewsData FindIndex(ref int index)
         {

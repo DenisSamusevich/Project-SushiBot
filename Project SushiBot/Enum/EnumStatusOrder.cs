@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Project_SushiBot
 {
-    static class ConfigInfo
+    enum EnumStatusOrder
     {
-        
+        OrderMaking,
+        OrderDelivery,
+        OrderСompleted,
     }
 }

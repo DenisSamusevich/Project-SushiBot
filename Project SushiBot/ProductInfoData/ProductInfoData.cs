@@ -8,9 +8,10 @@ namespace Project_SushiBot
 {
     class ProductInfoData
     {
-        internal string Name { get; }
-        protected string Description { get; }
-        internal double Price { get; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public double Price { get; set; }
+        internal ProductInfoData() { }
         internal ProductInfoData(string name, string descriptionText, string price)
         {
             Name = name;
@@ -23,18 +24,17 @@ namespace Project_SushiBot
             Console.WriteLine();
             Console.WriteLine(Description);
             Console.WriteLine();
-            Console.SetCursorPosition(0, 15); //цифры непонятные
-            Console.WriteLine("Цена:" + Price.ToString() + "Руб.");
+            Console.WriteLine("Цена:" + Price.ToString() + " Руб.");
         }
         internal static string DescriptionTextConversion(string DescriptionText)
         {
-            if (DescriptionText.Length < 80)
+            if (DescriptionText.Length < 79)
             {
                 return DescriptionText;
             }
             else
             {
-                int lastindex = DescriptionText.LastIndexOf(' ', 80);
+                int lastindex = DescriptionText.LastIndexOf(' ', 79);
                 string stringStart = DescriptionText.Substring(0, lastindex + 1);
                 string stringEnd = DescriptionText.Substring(lastindex + 1, DescriptionText.Length - lastindex - 1);
                 string returnDescriptionText = stringStart + "\n" + DescriptionTextConversion(stringEnd);

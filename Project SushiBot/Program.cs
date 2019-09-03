@@ -1,26 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using System.Threading;
+
 
 namespace Project_SushiBot
 {
     class Program
     {
+        private static readonly Logger logger = new Logger();
         static void Main(string[] args)
         {
             string userLogin = string.Empty;
-            //List<ProductData> userProductOrderData = new List<ProductData>();
             ProductOrderData productOrderData = new ProductOrderData();
             EnumPage enumPage = EnumPage.PageGreeting;
+            logger.Info("Start program", Thread.CurrentThread);
             start:
             switch (enumPage)
             {
                 case EnumPage.PageGreeting:
                     {
+                        logger.Info("Page greeting", Thread.CurrentThread);
                         PageProgram.PageGreeting(AdvertisingsBannerDataBase.RandomBanner());
                         startPageGreeting:
                         enumPage = PageProgram.PageGreetingBottom();
@@ -28,8 +27,9 @@ namespace Project_SushiBot
                         {
                             case EnumPage.Exit:
                                 {
+                                    logger.Info("Exit program", Thread.CurrentThread);
                                     Environment.Exit(0);
-                                        break;
+                                    break;
                                 }
                             case EnumPage.None:
                                 {
@@ -44,6 +44,7 @@ namespace Project_SushiBot
                     }
                 case EnumPage.PageLogin:
                     {
+                        logger.Info("Page user login", Thread.CurrentThread);
                         PageProgram.PageUserLogin(AdvertisingsBannerDataBase.RandomBanner(), out СursorPosition сursorPositionLogin, out СursorPosition сursorPositionPassword);
                         userLogin = PageInput.InputLogin(сursorPositionLogin);
                         PageInput.InputPassword(сursorPositionPassword, userLogin);
@@ -53,7 +54,9 @@ namespace Project_SushiBot
                         {
                             case EnumPage.Accept:
                                 {
+                                    logger.Info("User login", Thread.CurrentThread);
                                     enumPage = EnumPage.PageProfile;
+                                    PageProgram.PageInfo(AdvertisingsBannerDataBase.RandomBanner(), "Вы успешно вошли в систему");
                                     break;
                                 }
                             case EnumPage.Reset:
@@ -74,6 +77,7 @@ namespace Project_SushiBot
                     }
                 case EnumPage.PageRegisterNewUser:
                     {
+                        logger.Info("Page user register", Thread.CurrentThread);
                         PageProgram.PageRegisterNewUser(AdvertisingsBannerDataBase.RandomBanner(), out СursorPosition сursorPositionRegisterSurname, out СursorPosition сursorPositionRegisterName, out СursorPosition сursorPositionRegisterEmail, out СursorPosition сursorPositionRegisterLogin, out СursorPosition сursorPositionRegisterPassword, out СursorPosition сursorPositionRegisterRepeatPassword);
                         string newUserSurname = PageInput.InputRegistrationSurname(сursorPositionRegisterSurname);
                         string newUserName = PageInput.InputRegistrationName(сursorPositionRegisterName);
@@ -86,6 +90,7 @@ namespace Project_SushiBot
                         {
                             case EnumPage.Accept:
                                 {
+                                    logger.Info("User register", Thread.CurrentThread);
                                     enumPage = EnumPage.PageGreeting;
                                     UserDataRepository.CreateUserData(new UserData(newUserEmail, newUserName, newUserSurname, newUserLogin, newUserPassword));
                                     PageProgram.PageInfo(AdvertisingsBannerDataBase.RandomBanner(), "Вы успешно зарегестрировались");
@@ -109,7 +114,7 @@ namespace Project_SushiBot
                     }
                 case EnumPage.PageProfile:
                     {
-
+                        logger.Info("Page profile", Thread.CurrentThread);
                         PageProgram.PageProfile(AdvertisingsBannerDataBase.RandomBanner(), UserDataRepository.GetUserDataByLogin(userLogin));
                         startPageProfile:
                         enumPage = PageProgram.PageProfileBottom();
@@ -128,6 +133,7 @@ namespace Project_SushiBot
                     }
                 case EnumPage.PageNews:
                     {
+                        logger.Info("Page news", Thread.CurrentThread);
                         int IndexNews = 0;
                         startPageNewsIndexNew:
                         PageProgram.PageNews(AdvertisingsBannerDataBase.RandomBanner(), UserDataRepository.GetUserDataByLogin(userLogin), NewsDataRepository.GetNewsDataByIndex(ref IndexNews));
@@ -147,8 +153,7 @@ namespace Project_SushiBot
                                 }
                             case EnumPage.OpenBrowser:
                                 {
-                                    OpenFile.CreatePageBrowser(NewsDataRepository.GetNewsDataByIndex(ref IndexNews).Link);
-                                    OpenFile.OpenPageBrowser();
+                                    NewsDataRepository.GetNewsDataByIndex(ref IndexNews).OpenPageBrowser();
                                     goto startPageNews;
                                 }
                             case EnumPage.None:
@@ -157,7 +162,6 @@ namespace Project_SushiBot
                                 }
                             default:
                                 {
-                                    OpenFile.DeletePageBrowser();
                                     break;
                                 }
                         }
@@ -165,6 +169,7 @@ namespace Project_SushiBot
                     }
                 case EnumPage.PageStatusOrder:
                     {
+                        logger.Info("Page status order", Thread.CurrentThread);
                         int IndexOrder = int.MaxValue;
                         startPageStatusOrderIndexNew:
                         PageProgram.PageStatusOrder(AdvertisingsBannerDataBase.RandomBanner(), UserDataRepository.GetUserDataByLogin(userLogin), ProductOrderDataBaseRepository.ProductOrderUserDataByIndex(ref IndexOrder, userLogin));
@@ -177,7 +182,7 @@ namespace Project_SushiBot
                                     IndexOrder += 1;
                                     goto startPageStatusOrderIndexNew;
                                 }
-                            case EnumPage.NextProduct:
+                            case EnumPage.NextOrder:
                                 {
                                     IndexOrder -= 1;
                                     goto startPageStatusOrderIndexNew;
@@ -199,33 +204,34 @@ namespace Project_SushiBot
                     }
                 case EnumPage.PageOrderSushi:
                     {
+                        logger.Info("Page order sushi", Thread.CurrentThread);
                         int indexMenu = 0;
                         int indexProduct = 0;
                         List<ProductData> userProductOrderData = new List<ProductData>();
                         startPageOrderSushiIndexNew:
-                        PageProgram.PageOrderSushi(AdvertisingsBannerDataBase.RandomBanner(), UserDataRepository.GetUserDataByLogin(userLogin), ProductInfoDataBase.MenuData, indexMenu, ProductInfoDataRepository.GetProductDataByindex(ref indexMenu, ref indexProduct), out СursorPosition сursorPositionInputAmount);
+                        PageProgram.PageOrderSushi(AdvertisingsBannerDataBase.RandomBanner(), UserDataRepository.GetUserDataByLogin(userLogin), ProductInfoDataBase.GetAllMenuData(), ref indexMenu, ProductInfoDataRepository.GetProductDataByindex(ref indexMenu, ref indexProduct), out СursorPosition сursorPositionInputAmount); ;
                         startPageOrderSushi:
                         enumPage = PageProgram.PageOrderSushiBottom();
                         switch (enumPage)
                         {
                             case EnumPage.NextProduct:
                                 {
-                                    indexProduct += 1;
+                                    indexMenu += 1;
                                     goto startPageOrderSushiIndexNew;
                                 }
                             case EnumPage.PrevProduct:
                                 {
-                                    indexProduct -= 1;
+                                    indexMenu -= 1;
                                     goto startPageOrderSushiIndexNew;
                                 }
                             case EnumPage.UpProduct:
                                 {
-                                    indexMenu += 1;
+                                    indexProduct += 1;
                                     goto startPageOrderSushiIndexNew;
                                 }
                             case EnumPage.DownProduct:
                                 {
-                                    indexMenu -= 1;
+                                    indexProduct -= 1;
                                     goto startPageOrderSushiIndexNew;
                                 }
                             case EnumPage.Amount:
@@ -235,17 +241,18 @@ namespace Project_SushiBot
                                     {
                                         userProductOrderData.Add(new ProductData(ProductInfoDataRepository.GetProductDataByindex(ref indexMenu, ref indexProduct), amount));
                                     }
-                                    goto startPageOrderSushiIndexNew;
+                                    goto startPageOrderSushi;
                                 }
                             case EnumPage.PageRegistrationOrder:
                                 {
-                                    if (userProductOrderData == null)
+                                    if (userProductOrderData.Count==0)
                                     {
                                         enumPage = EnumPage.PageProfile;
                                         PageProgram.PageInfo(AdvertisingsBannerDataBase.RandomBanner(), "Вы ничего не выбрали");
                                     }
                                     else
                                     {
+                                        logger.Info("Order selected", Thread.CurrentThread);
                                         productOrderData = new ProductOrderData(userLogin, userProductOrderData);
                                         PageProgram.PageInfo(AdvertisingsBannerDataBase.RandomBanner(), "Заказ сформирован");
                                     }
@@ -264,6 +271,7 @@ namespace Project_SushiBot
                     }
                 case EnumPage.PageRegistrationOrder:
                     {
+                        logger.Info("Page registration order", Thread.CurrentThread);
                         PageProgram.PageRegistrationOrder(AdvertisingsBannerDataBase.RandomBanner(), UserDataRepository.GetUserDataByLogin(userLogin), productOrderData);
                         startPageRegistrationOrder:
                         enumPage = PageProgram.PageRegistrationOrderBottom();
@@ -282,7 +290,7 @@ namespace Project_SushiBot
                     }
                 case EnumPage.PageOrderEnd:
                     {
-
+                        logger.Info("Page order end", Thread.CurrentThread);
                         PageProgram.PageOrderEnd(AdvertisingsBannerDataBase.RandomBanner(), UserDataRepository.GetUserDataByLogin(userLogin), out СursorPosition сursorPositionInputStreet, out СursorPosition сursorPositionInputHouse, out СursorPosition сursorPositionInputApartment, out СursorPosition сursorPositionInputPhone);
                         string newOrderStreet = PageInput.InputStreet(сursorPositionInputStreet);
                         string newOrderHouse = PageInput.InputHouse(сursorPositionInputHouse);
@@ -294,9 +302,12 @@ namespace Project_SushiBot
                         {
                             case EnumPage.Accept:
                                 {
+                                    logger.Info("Opder set data base", Thread.CurrentThread);
                                     productOrderData.SetInfoOrder(newOrderStreet, newOrderHouse, newOrderApartment, newOrderPhone);
                                     ProductOrderDataBaseRepository.CreateProductOrderUserData(productOrderData);
                                     ProductOrderDataBaseRepository.SaveAllProductOrderData();
+                                    PageProgram.PageInfo(AdvertisingsBannerDataBase.RandomBanner(), "Заказ внесен в базу");
+                                    ChangeStatusOrder.StartChangeOrder(productOrderData);
                                     enumPage = EnumPage.PageProfile;
                                     break;
                                 }
@@ -318,6 +329,7 @@ namespace Project_SushiBot
                         goto start;
                     }
             }
+            Console.WriteLine("получился выход");
             Console.Read();
         }
     }
