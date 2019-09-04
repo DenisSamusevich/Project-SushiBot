@@ -12,6 +12,7 @@ namespace Project_SushiBot
         string Title { get; set; }
         string Text { get; set; }
         string Link { get; set; }
+
         internal NewsData(string title, string text, string link)
         {
             Title = title;

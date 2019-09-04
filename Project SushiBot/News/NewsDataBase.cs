@@ -11,10 +11,12 @@ namespace Project_SushiBot
     class NewsDataBase : IDisposable
     {
         private static readonly Logger logger = new Logger();
-        FileInfo File { get; set; } = new FileInfo(Environment.CurrentDirectory + @"\NewsData\News.txt");
+        FileInfo File { get; set; }
         static NewsData[] AllNewsData { get; set; }
+
         internal NewsDataBase()
         {
+            File = new FileInfo(Environment.CurrentDirectory + @"\NewsData\News.txt");
             AllNewsData = NewsReadFile(NumberNewsReadFile());
         }
         internal int NumberNewsReadFile()
@@ -116,7 +118,6 @@ namespace Project_SushiBot
         {
             if (disposing)
             {
-                File = null;
                 AllNewsData = null;
             }
         }

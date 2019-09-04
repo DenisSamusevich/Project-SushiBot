@@ -11,10 +11,12 @@ namespace Project_SushiBot
     class AdvertisingsBannerDataBase
     {
         private static readonly Logger logger = new Logger();
-        static FileInfo File { get; set; } = new FileInfo(Environment.CurrentDirectory+ @"\AdvertisingsData\Advertisings.txt");
+        static FileInfo File { get; set; }
         internal string[] Banners { get; set; }
+
         internal AdvertisingsBannerDataBase()
         {
+            File = new FileInfo(Environment.CurrentDirectory + @"\AdvertisingsData\Advertisings.txt");
             Banners = AdvertisingsBannerReadFile(NumberAdvertisingsReadFile());
         }
         internal static int NumberAdvertisingsReadFile()
@@ -45,7 +47,6 @@ namespace Project_SushiBot
                 logger.Error("\"start\" not found in file", Thread.CurrentThread);
                 return 0;
             }
-  
         }
         internal static string[] AdvertisingsBannerReadFile(int numberAdvertisings)
         {
@@ -88,7 +89,6 @@ namespace Project_SushiBot
                 logger.Error("Advertisings not found", Thread.CurrentThread);
                 return null;
             }
-
         }
         public void Dispose()
         {
@@ -99,7 +99,6 @@ namespace Project_SushiBot
         {
             if (disposing)
             {
-                File = null;
                 Banners = null;
             }
         }

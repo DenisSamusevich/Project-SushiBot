@@ -19,6 +19,7 @@ namespace Project_SushiBot
         public EnumStatusOrder EnumStatusOrder { get; set; }
         public Address<string,string,string> Address { get; set; }
         public string Phone { get; set; }
+
         internal ProductOrderData() { }
         internal ProductOrderData(string login, List<ProductData> productData)
         {

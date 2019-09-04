@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace Project_SushiBot
 {
-    class UserData : IDisposable;
+    class UserData : IDisposable
     {
         internal string Email { get;set; } = string.Empty;
         internal string Name { get; set; } = string.Empty;
         internal string Surname { get; set; } = string.Empty;
         internal string Login { get; set; } = string.Empty;
         internal string Password { get; set; } = string.Empty;
+
         internal UserData() { }
         internal UserData(string email, string name, string surname, string login, string password)
         {

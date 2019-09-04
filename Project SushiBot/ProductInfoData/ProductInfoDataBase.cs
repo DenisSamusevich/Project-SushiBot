@@ -8,14 +8,16 @@ using System.Threading;
 
 namespace Project_SushiBot
 {
-    class ProductInfoDataBase : 
+    class ProductInfoDataBase : IDisposable 
     {
         private static readonly Logger logger = new Logger();
-        static FileInfo File { get; set; } = new FileInfo(Environment.CurrentDirectory + @"\ProductData\Product.txt");
+        static FileInfo File { get; set; } 
         static ProductInfoData[][] AllProductInfoData { get; set; }
         static string[] MenuData { get; set; }
+
         internal ProductInfoDataBase()
         {
+            File = new FileInfo(Environment.CurrentDirectory + @"\ProductData\Product.txt");
             AllProductInfoData = ProductReadFile(NumberMenuProductReadFile(NumberMenuReadFile()),out string[] returnMenuData);
             MenuData = returnMenuData;
         }
@@ -148,7 +150,6 @@ namespace Project_SushiBot
                 returnMenuData = null;
                 return null;
             }
-
         }
         internal ProductInfoData FindIndex(ref int indexMenu, ref int indexProduct)
         {
@@ -199,7 +200,6 @@ namespace Project_SushiBot
         {
             if (disposing)
             {
-                File = null;
                 AllProductInfoData = null;
                 MenuData = null;
             }

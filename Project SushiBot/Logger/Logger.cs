@@ -10,7 +10,8 @@ namespace Project_SushiBot
     class Logger: ILogger
     {
         static int Count { get; set; } = 0;
-        static FileInfo File { get; set; } 
+        static FileInfo File { get; set; }
+        
         static Logger()
         {
             File = new FileInfo(Environment.CurrentDirectory + string.Format(@"\Logs\log " + DateTime.Now.Year.ToString("D4") + DateTime.Now.Month.ToString("D2") + DateTime.Now.Day.ToString("D2") + "_{0:d2}.txt", Count));

@@ -181,10 +181,8 @@ namespace Project_SushiBot
                     {
                         break;
                     }
-
                 }
             }
-
             return userPassword;
         }
         internal static void InputPassword(СursorPosition сursorPositionPassword, string userLogin)

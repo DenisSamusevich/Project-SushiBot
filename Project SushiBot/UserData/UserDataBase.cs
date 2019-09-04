@@ -11,17 +11,19 @@ namespace Project_SushiBot
     class UserDataBase : IDisposable
     {
         private static readonly Logger logger = new Logger();
-        static FileInfo File { get; set; } = new FileInfo(Environment.CurrentDirectory + @"\UserDataBase\UserDataBase.txt");
+        static FileInfo File { get; set; }
         internal static List<UserData> AllUserData { get; set; }
+
         internal UserDataBase()
         {
+            File = new FileInfo(Environment.CurrentDirectory + @"\UserDataBase\UserDataBase.txt");
             AllUserData = UsersDataReadFile(NumberUsersDataReadFile());
         }
         internal static int NumberUsersDataReadFile()
         {
             string lineRead = string.Empty;
             int numberUsersData = 0;
-            FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.Read,FileShare.Read);
             StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
             while (true)
             {
@@ -47,7 +49,7 @@ namespace Project_SushiBot
             }
             else
             {
-                FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                FileStream fileStream = File.Open(FileMode.OpenOrCreate, FileAccess.Read,FileShare.Read);
                 StreamReader streamReader = new StreamReader(fileStream, Encoding.Default);
                 logger.Debag("Start database read", Thread.CurrentThread);
                 List<UserData> returnAllUsersData = new List<UserData>();
@@ -126,7 +128,6 @@ namespace Project_SushiBot
         {
             if (disposing)
             {
-                File = null;
                 AllUserData = null;
             }
         }

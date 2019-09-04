@@ -14,6 +14,7 @@ namespace Project_SushiBot
         private static readonly Logger logger = new Logger();
         internal static List<ProductOrderData> AllProductOrderData { get; set; }
         internal static List<ProductOrderData> AllProductOrderUserData { get; set; }
+
         static ProductOrderDataBase()
         {
             List<ProductOrderData> productOrderReadFile = ProductOrderReadFile();

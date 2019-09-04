@@ -13,6 +13,7 @@ namespace Project_SushiBot
         public string Name { get; set; }
         public string Description { get; set; }
         public double Price { get; set; }
+
         internal ProductInfoData() { }
         internal ProductInfoData(string name, string descriptionText, string price)
         {

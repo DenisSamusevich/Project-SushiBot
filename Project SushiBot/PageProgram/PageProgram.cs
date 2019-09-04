@@ -64,7 +64,6 @@ namespace Project_SushiBot
         }
         internal static EnumPage PageUserLoginBottom()
         {
-            //Метод повторяется с PageRegisterNewUserBottom
             Console.SetCursorPosition(CursorPositionInputInfoLeft.Left, CursorPositionInputInfoLeft.Top);
             Console.WriteLine("ENTER - Принять форму");
             Console.WriteLine("DELETE - Сбросить форму");
@@ -247,7 +246,6 @@ namespace Project_SushiBot
                 orderInfo.OrderDataWrite();
             }
             userData.Dispose();
-            orderInfo.Dispose();
         }
         internal static EnumPage PageStatusOrderBottom()
         {
@@ -311,7 +309,6 @@ namespace Project_SushiBot
             сursorPositionInputAmount = new СursorPosition(Console.CursorLeft, Console.CursorTop);
             Console.Write(0.ToString());
             userData.Dispose();
-            product.Dispose();
         }
         internal static EnumPage PageOrderSushiBottom()
         {
@@ -362,7 +359,6 @@ namespace Project_SushiBot
                         return EnumPage.None;
                     }
             }
-
         }
         internal static void PageRegistrationOrder(string advertising, UserData userData, ProductOrderData orderInfo)
         {
@@ -372,7 +368,6 @@ namespace Project_SushiBot
             Console.WriteLine("Тут вы можете подтвердить список заказаных суши и оформить доставку\n");
             orderInfo.OrderDataPriceWrite();
             userData.Dispose();
-            orderInfo.Dispose();
         }
         internal static EnumPage PageRegistrationOrderBottom()
         {

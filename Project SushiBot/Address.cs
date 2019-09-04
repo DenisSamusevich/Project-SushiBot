@@ -13,6 +13,7 @@ namespace Project_SushiBot
         public T1 Street { get; }
         public T2 House { get; }
         public T3 Apartment { get; }
+
         public Address(string street, string house, string apartment)
         {
             Street = ConvertTypeT1(street);

@@ -9,6 +9,7 @@ namespace Project_SushiBot
     class ProductData : ProductInfoData, IDisposable
     {
         public int Amount { get; set; }
+
         internal ProductData() { }
         internal ProductData(string name, string descriptionText, string price, int amount) : base(name, descriptionText, price)
         {
@@ -29,19 +30,17 @@ namespace Project_SushiBot
         {
             return (Price * Amount);
         }
-        public void Dispose()
+        public new void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
-        protected virtual void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
                 Amount = 0;
-                Name = null;
-                Description = null;
-                Price = 0;
+                base.Dispose();
             }
         }
         ~ProductData()
