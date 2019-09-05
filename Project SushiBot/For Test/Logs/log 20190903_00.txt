@@ -1,0 +1,9 @@
+﻿2019-43-03 02:43:29  INFO   Project SushiBotWriteFotrmatLog - Start program
+2019-49-03 02:49:24  INFO   Project SushiBot | Logger - Start program
+2019-55-03 02:55:55  INFO   Project SushiBot | Logger - Start program
+2019-38-03 03:38:18  INFO   Project SushiBot | Logger - Start program
+2019-21-03 04:21:24  INFO   Project SushiBot | Main - Start program
+2019-02-03 05:02:20  INFO   Project SushiBot | Main - Start program
+2019-03-03 05:03:28  INFO   Project SushiBot | Main - Start program
+2019-05-03 05:05:36  INFO   Project SushiBot | Main - Start program
+2019-09-03 05:09:24  INFO   Project SushiBot | Main - Start program  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running

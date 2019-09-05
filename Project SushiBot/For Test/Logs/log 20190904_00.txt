@@ -1,0 +1,289 @@
+﻿2019-44-04 02:44:26  DEBG   Project SushiBot | AdvertisingsBannerReadFile - Start advertisings database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 02:44:26  INFO   Project SushiBot | Main - Start program  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 02:44:26  INFO   Project SushiBot | Main - Page greeting  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 02:44:29  INFO   Project SushiBot | Main - Page user login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 02:44:29  INFO   Project SushiBot | InputLogin - Input login to enter  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 02:44:34  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 02:44:34  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 02:44:34  INFO   Project SushiBot | InputPassword - Input password to enter  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 02:44:38  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:43  DEBG   Project SushiBot | AdvertisingsBannerReadFile - Start advertisings database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:43  INFO   Project SushiBot | Main - Start program  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:43  INFO   Project SushiBot | Main - Page greeting  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:47  INFO   Project SushiBot | Main - Page user login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:47  INFO   Project SushiBot | InputLogin - Input login to enter  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:51  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:51  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:51  INFO   Project SushiBot | InputPassword - Input password to enter  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:54  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:54  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:56  INFO   Project SushiBot | Main - User login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:59  INFO   Project SushiBot | Main - Page profile  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:59  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-49-04 02:49:59  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:04  INFO   Project SushiBot | Main - Page order sushi  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:04  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:04  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:08  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:08  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:09  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:09  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:10  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:10  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:10  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:10  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:10  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:10  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:27  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:27  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:28  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:28  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:28  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:28  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:29  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:29  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:29  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:29  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:30  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:30  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:30  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:30  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:45  INFO   Project SushiBot | Main - Order selected  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:48  INFO   Project SushiBot | Main - Page registration order  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:48  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:48  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:59  INFO   Project SushiBot | Main - Page order end  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:59  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:59  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-50-04 02:50:59  INFO   Project SushiBot | InputStreet - Input street  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:11  INFO   Project SushiBot | InputHouse - Input house  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:17  INFO   Project SushiBot | InputApartment - Input apartment  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:21  INFO   Project SushiBot | InputPhone - Input phone  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:28  INFO   Project SushiBot | Main - Opder set data base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:29  DEBG   Project SushiBot | ProductOrderReadFile - Database order read from file  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:30  DEBG   Project SushiBot | Insert - Order added in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:30  DEBG   Project SushiBot | ProductOrderWriteFile - Database order write in file  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:34  INFO   Project SushiBot | Main - Page profile  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:34  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:34  ERRR   Project SushiBot | GetLoginOrder - Login not found in order  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:34  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:34  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-51-04 02:51:34  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:36  DEBG   Project SushiBot | AdvertisingsBannerReadFile - Start advertisings database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:36  INFO   Project SushiBot | Main - Start program  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:36  INFO   Project SushiBot | Main - Page greeting  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:39  INFO   Project SushiBot | Main - Page user login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:39  INFO   Project SushiBot | InputLogin - Input login to enter  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:46  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:46  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:46  INFO   Project SushiBot | InputPassword - Input password to enter  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:49  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:49  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:50  INFO   Project SushiBot | Main - User login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:51  INFO   Project SushiBot | Main - Page profile  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:51  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:51  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:54  INFO   Project SushiBot | Main - Page status order  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:54  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:54  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:54  DEBG   Project SushiBot | ProductOrderReadFile - Database order read from file  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:54  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-57-04 02:57:54  ERRR   Project SushiBot | GetLoginOrder - Login not found in order  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-30-04 03:30:52  DEBG   Project SushiBot | AdvertisingsBannerReadFile - Start advertisings database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-30-04 03:30:52  INFO   Project SushiBot | Main - Start program  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-30-04 03:30:52  INFO   Project SushiBot | Main - Page greeting  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-30-04 03:30:54  INFO   Project SushiBot | Main - Page user login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-30-04 03:30:54  INFO   Project SushiBot | InputLogin - Input login to enter  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-30-04 03:30:57  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-30-04 03:30:57  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-30-04 03:30:57  INFO   Project SushiBot | InputPassword - Input password to enter  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-31-04 03:31:02  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-31-04 03:31:02  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-31-04 03:31:04  INFO   Project SushiBot | Main - User login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-31-04 03:31:06  INFO   Project SushiBot | Main - Page profile  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-31-04 03:31:06  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-31-04 03:31:06  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-31-04 03:31:09  INFO   Project SushiBot | Main - Page status order  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-31-04 03:31:09  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-31-04 03:31:09  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-31-04 03:31:24  DEBG   Project SushiBot | ProductOrderReadFile - Database order read from file  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-31-04 03:31:25  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-31-04 03:31:25  ERRR   Project SushiBot | GetLoginOrder - Login not found in order  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:19  DEBG   Project SushiBot | AdvertisingsBannerReadFile - Start advertisings database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:19  INFO   Project SushiBot | Main - Start program  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:19  INFO   Project SushiBot | Main - Page greeting  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:20  INFO   Project SushiBot | Main - Page user login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:20  INFO   Project SushiBot | InputLogin - Input login to enter  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:23  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:24  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:24  INFO   Project SushiBot | InputPassword - Input password to enter  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:26  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:26  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:28  INFO   Project SushiBot | Main - User login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:30  INFO   Project SushiBot | Main - Page profile  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:30  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:30  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:32  INFO   Project SushiBot | Main - Page order sushi  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:32  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:32  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:35  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:35  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:36  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:36  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:36  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:36  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:36  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:36  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:37  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:37  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:37  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:37  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:45  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:45  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:51  INFO   Project SushiBot | Main - Order selected  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:53  INFO   Project SushiBot | Main - Page registration order  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:53  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:53  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:57  INFO   Project SushiBot | Main - Page order end  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:57  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:57  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-37-04 03:37:57  INFO   Project SushiBot | InputStreet - Input street  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-38-04 03:38:00  INFO   Project SushiBot | InputHouse - Input house  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-38-04 03:38:02  INFO   Project SushiBot | InputApartment - Input apartment  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-38-04 03:38:03  INFO   Project SushiBot | InputPhone - Input phone  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-38-04 03:38:17  INFO   Project SushiBot | Main - Opder set data base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-38-04 03:38:17  DEBG   Project SushiBot | ProductOrderReadFile - Database order read from file  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-38-04 03:38:17  DEBG   Project SushiBot | Insert - Order added in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-38-04 03:38:17  DEBG   Project SushiBot | ProductOrderWriteFile - Database order write in file  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-38-04 03:38:22  INFO   Project SushiBot | Main - Page profile  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-38-04 03:38:22  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-38-04 03:38:22  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-38-04 03:38:22  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-43-04 03:43:49  DEBG   Project SushiBot | AdvertisingsBannerReadFile - Start advertisings database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-43-04 03:43:49  INFO   Project SushiBot | Main - Start program  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-43-04 03:43:49  INFO   Project SushiBot | Main - Page greeting  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-43-04 03:43:53  INFO   Project SushiBot | Main - Page user login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-43-04 03:43:53  INFO   Project SushiBot | InputLogin - Input login to enter  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-43-04 03:43:56  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-43-04 03:43:56  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-43-04 03:43:56  INFO   Project SushiBot | InputPassword - Input password to enter  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-43-04 03:43:58  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-43-04 03:43:58  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-43-04 03:43:59  INFO   Project SushiBot | Main - User login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:00  INFO   Project SushiBot | Main - Page profile  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:00  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:00  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:01  INFO   Project SushiBot | Main - Page status order  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:01  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:01  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:08  DEBG   Project SushiBot | ProductOrderReadFile - Database order read from file  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:08  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:08  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:12  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:12  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:12  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:12  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:12  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:12  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:12  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:12  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:13  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:13  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:13  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:13  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:13  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:13  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:13  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:13  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:13  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:13  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:13  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:13  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:14  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:14  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:14  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:14  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:14  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:14  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:14  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:14  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:14  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:14  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:14  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:14  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:15  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:15  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:15  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:15  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:15  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:15  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:15  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:15  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:15  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:15  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:15  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:15  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:16  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:17  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:17  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:17  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:17  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:17  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:17  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:17  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:17  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:17  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:17  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:18  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:18  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:18  DEBG   Project SushiBot | FindLogin - Find order use login  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:18  DEBG   Project SushiBot | FindCurrentUserIndex - Order find in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:19  INFO   Project SushiBot | Main - Page profile  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:19  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:19  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:24  INFO   Project SushiBot | Main - Page order sushi  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:24  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:24  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:27  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:27  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:28  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:28  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:28  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:28  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:33  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:33  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:33  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:33  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:34  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:34  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:40  INFO   Project SushiBot | Main - Order selected  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:41  INFO   Project SushiBot | Main - Page registration order  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:41  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:41  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:43  INFO   Project SushiBot | Main - Page order end  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:43  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:43  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:43  INFO   Project SushiBot | InputStreet - Input street  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:46  INFO   Project SushiBot | InputHouse - Input house  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:48  INFO   Project SushiBot | InputApartment - Input apartment  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:50  INFO   Project SushiBot | InputPhone - Input phone  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:57  INFO   Project SushiBot | Main - Opder set data base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:57  DEBG   Project SushiBot | Insert - Order added in database  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-44-04 03:44:57  DEBG   Project SushiBot | ProductOrderWriteFile - Database order write in file  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-45-04 03:45:00  INFO   Project SushiBot | Main - Page profile  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-45-04 03:45:00  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-45-04 03:45:00  INFO   Project SushiBot | GetUserDataByLogin - Lodin request in base  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
+2019-45-04 03:45:00  DEBG   Project SushiBot | UsersDataReadFile - Start database read  Thread data - ContextID:0, Name:, IsAlive:True Priority:Normal, State:Running
